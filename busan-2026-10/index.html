@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>釜山 4天3夜 · 10/1–10/4</title>
+<style>
+:root{
+  --ink:#0F1A2B;
+  --ink-2:#33425A;
+  --muted:#6B788C;
+  --hair:#D8DFE9;
+  --panel:#EDF1F6;
+  --paper:#FFFFFF;
+  --l1:#F06A00;   /* 1號線 橘 */
+  --l2:#5FA83C;   /* 2號線 綠 */
+  --l3:#B08300;   /* 3號線 褐 */
+  --dh:#0B4F9E;   /* 東海線 藍 */
+  --alert:#B3271E;
+  --line:var(--l1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--panel);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC","Segoe UI","Microsoft JhengHei",sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:640px;margin:0 auto;background:var(--paper);min-height:100vh}
+:focus-visible{outline:2.5px solid var(--dh);outline-offset:2px;border-radius:3px}
+
+/* ---------- 出發看板 ---------- */
+.board{background:var(--ink);color:#fff;padding:26px 20px 22px}
+.board h1{margin:0;font-size:1.5rem;font-weight:700;letter-spacing:.01em}
+.board .who{margin:6px 0 0;color:#9FB1C9;font-size:.86rem}
+.legs{margin-top:20px;display:grid;gap:1px;background:#25344B;border-radius:8px;overflow:hidden}
+.leg{background:#16233A;padding:12px 14px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.leg .code{font-size:1.35rem;font-weight:700;line-height:1.1}
+.leg .code small{display:block;font-size:.62rem;font-weight:500;color:#8DA1BC;letter-spacing:.06em}
+.leg .mid{text-align:center;color:#8DA1BC;font-size:.72rem;border-top:1px solid #33455F;padding-top:5px}
+.leg .mid b{display:block;color:#fff;font-size:.8rem;font-weight:600;margin-bottom:3px}
+.board .stay{margin:16px 0 0;font-size:.84rem;color:#B9C7DB;border-top:1px solid #2A3A53;padding-top:14px}
+.board .stay b{color:#fff;font-weight:600}
+
+/* ---------- 提醒 ---------- */
+.flags{padding:18px 20px 4px;display:grid;gap:10px}
+.flag{border-left:3px solid var(--alert);background:#FCF4F3;padding:11px 13px;border-radius:0 6px 6px 0;font-size:.88rem}
+.flag b{display:block;color:var(--alert);font-size:.82rem;margin-bottom:2px}
+.flag.calm{border-color:var(--dh);background:#F1F5FB}
+.flag.calm b{color:var(--dh)}
+
+/* ---------- 分頁 ---------- */
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--hair);display:flex;padding:0 12px;gap:2px}
+nav button{
+  flex:1;appearance:none;background:none;border:0;border-bottom:3px solid transparent;
+  padding:13px 2px 10px;font:inherit;font-size:.83rem;color:var(--muted);cursor:pointer;
+}
+nav button b{display:block;font-size:1rem;color:var(--ink-2);font-weight:700}
+nav button[aria-selected=true]{border-bottom-color:var(--line);color:var(--ink)}
+nav button[aria-selected=true] b{color:var(--line)}
+
+/* ---------- 每天 ---------- */
+.day{display:none;padding:22px 20px 8px}
+.day.on{display:block}
+.dayhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.dayhead h2{margin:0;font-size:1.22rem;font-weight:700}
+.dayhead .date{color:var(--muted);font-size:.85rem}
+.rails{margin:10px 0 22px;display:flex;flex-wrap:wrap;gap:6px}
+.rail{font-size:.74rem;font-weight:600;color:#fff;padding:3px 9px;border-radius:20px}
+.r1{background:var(--l1)}.r2{background:var(--l2)}.r3{background:var(--l3)}.rd{background:var(--dh)}
+.rwalk{background:#7A879A}
+
+.stops{border-left:2px solid var(--line);margin-left:52px;padding-left:0}
+.stop{position:relative;padding:0 0 22px 20px}
+.stop::before{
+  content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--line);
+}
+.stop.pin::before{background:var(--line)}
+.stop .t{position:absolute;left:-72px;top:2px;width:46px;text-align:right;font-size:.82rem;font-weight:600;color:var(--muted)}
+.stop h3{margin:0 0 3px;font-size:1rem;font-weight:700}
+.stop p{margin:0;font-size:.9rem;color:var(--ink-2)}
+.stop p + p{margin-top:5px}
+.stop .move{color:var(--muted);font-size:.85rem}
+
+/* ---------- 取捨 ---------- */
+.fork{margin:2px 0 24px;border:1px dashed var(--hair);border-radius:8px;background:#FAFCFE;padding:13px 15px}
+.fork > b{display:block;font-size:.78rem;font-weight:700;color:var(--muted);letter-spacing:.04em;margin-bottom:9px}
+.fk{padding:9px 0;border-top:1px solid #E9EFF6}
+.fk:first-of-type{border-top:0;padding-top:0}
+.fk .alt{display:block;font-size:.88rem;font-weight:600;color:var(--ink-2)}
+.fk .cost{display:block;font-size:.84rem;color:var(--muted);margin-top:2px}
+.fk.now .alt{color:var(--l2)}
+.fk.now .alt::before{content:"現在這樣排　";font-weight:700;font-size:.72rem;letter-spacing:.04em;color:var(--l2)}
+
+/* ---------- 吃飯 ---------- */
+.meals{margin:0 0 26px;border-top:1px solid var(--hair);padding-top:16px}
+.meals h3{margin:0 0 12px;font-size:.95rem;font-weight:700}
+.opt{padding:10px 0;border-top:1px solid #EEF2F7}
+.opt:first-of-type{border-top:0;padding-top:2px}
+.opt .nm{font-size:.93rem;font-weight:600}
+.opt .nm span{font-weight:400;color:var(--muted);font-size:.84rem;margin-left:5px}
+.opt .why{margin:2px 0 0;font-size:.86rem;color:var(--ink-2)}
+.opt.star .nm::before{content:"★ ";color:var(--line)}
+.snacks{margin-top:12px;background:var(--panel);border-radius:7px;padding:11px 13px;font-size:.86rem;color:var(--ink-2)}
+.snacks b{color:var(--ink)}
+
+/* ---------- 韓文貼紙 ---------- */
+.kchip{
+  display:block;width:100%;text-align:left;margin:0 0 7px;appearance:none;cursor:pointer;
+  border:1px solid var(--hair);border-radius:7px;background:#fff;padding:9px 11px;
+  font:inherit;font-size:.94rem;color:var(--ink);line-height:1.4;
+}
+.kchip:last-child{margin-bottom:0}
+.kchip .zh{display:block;font-size:.78rem;color:var(--muted);margin-top:1px}
+.kchip.copied{border-color:var(--l2);background:#F3F9EF}
+.kchip.copied .zh{color:var(--l2)}
+
+/* ---------- 小幫手 ---------- */
+.kit{display:none;padding:22px 20px 8px}
+.kit.on{display:block}
+.kit > h2{margin:0 0 18px;font-size:1.22rem;font-weight:700}
+.card{border:1px solid var(--hair);border-radius:9px;margin-bottom:14px;overflow:hidden}
+.card > h3{margin:0;padding:12px 15px;background:var(--panel);font-size:.93rem;font-weight:700;border-bottom:1px solid var(--hair)}
+.card .body{padding:14px 15px}
+.card .body p{margin:0 0 9px;font-size:.88rem;color:var(--ink-2)}
+.card .body p:last-child{margin-bottom:0}
+.card table{width:100%;border-collapse:collapse;font-size:.86rem}
+.card th{text-align:left;vertical-align:top;padding:7px 10px 7px 0;color:var(--muted);font-weight:600;white-space:nowrap;width:1%}
+.card td{padding:7px 0;color:var(--ink-2);border-bottom:1px solid #EEF2F7}
+.card tr:last-child td{border-bottom:0}
+.app{display:grid;grid-template-columns:44px 1fr;gap:11px;padding:10px 0;border-top:1px solid #EEF2F7}
+.app:first-child{border-top:0;padding-top:0}
+.ic{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:#fff;text-align:center;line-height:1.15}
+.app .nm{font-size:.92rem;font-weight:600}
+.app .nm em{font-style:normal;color:var(--muted);font-weight:400;font-size:.82rem}
+.must{display:inline-block;background:var(--alert);color:#fff;font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:5px;vertical-align:1px}
+.app .ds{font-size:.85rem;color:var(--ink-2);margin-top:2px}
+ul.todo{list-style:none;margin:0;padding:0}
+ul.todo li{border-top:1px solid #EEF2F7;padding:9px 0}
+ul.todo li:first-child{border-top:0;padding-top:0}
+ul.todo label{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;cursor:pointer;font-size:.89rem}
+ul.todo input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--l2)}
+ul.todo .sub{display:block;font-size:.8rem;color:var(--muted);margin-top:1px}
+ul.todo input:checked + span{color:var(--muted);text-decoration:line-through}
+ul.todo input:checked + span .sub{text-decoration:none}
+
+footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--hair);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="board">
+  <h1>釜山 4 天 3 夜</h1>
+  <p class="who">2026 年 10 月 1 日（四）– 10 月 4 日（日）· 6 人</p>
+
+  <div class="legs">
+    <div class="leg">
+      <div class="code">TPE<small>12:20 · T1</small></div>
+      <div class="mid"><b>易斯達 ZE990</b>3 小時 40 分 · 去程 10/1</div>
+      <div class="code">PUS<small>17:00 · 金海</small></div>
+    </div>
+    <div class="leg">
+      <div class="code">PUS<small>14:15 · 金海</small></div>
+      <div class="mid"><b>釜山航空 BX791</b>2 小時 30 分 · 回程 10/4</div>
+      <div class="code">TPE<small>15:45 · T2</small></div>
+    </div>
+  </div>
+
+  <p class="stay"><b>連山站旁飯店</b>　連山站步行 3 分 · 入住 14:00 / 退房 12:00<br>
+  兩段機場接送都叫兩台計程車，每台約 ₩17,000–23,000、40 分鐘。</p>
+</header>
+
+<section class="flags">
+  <div class="flag">
+    <b>10/3 是韓國開天節</b>
+    10/3（六）到 10/5（一）是韓國三天連假，觀光景點與商圈都會很滿。已預約的行程在當天 15:00，出發前請再要一次書面確認。
+  </div>
+  <div class="flag">
+    <b>汗蒸幕排在療程之前，順序不要調換</b>
+    療程後數天不能碰高溫、泡湯、蒸氣。SPA LAND 固定在 10/2，之後整趟不再安排任何溫熱設施。
+  </div>
+  <div class="flag calm">
+    <b>兩件要先訂</b>
+    韓牛餐廳（10/2 晚、6 人、海景位）和斜坡滑車門票。滑車現場也買得到，但連假前一天人潮難料。
+  </div>
+  <div class="flag calm">
+    <b>每天下面都有「可以改，但代價是什麼」</b>
+    有想換的行程，先看那一格。裡面寫的是為什麼現在這樣排、換掉要付什麼代價。看完還想換，就在群組講。
+  </div>
+</section>
+
+<nav id="tabs" role="tablist" aria-label="行程分頁">
+  <button role="tab" id="t1" aria-controls="d1" aria-selected="true"><b>D1</b>10/1 四</button>
+  <button role="tab" id="t2" aria-controls="d2" aria-selected="false"><b>D2</b>10/2 五</button>
+  <button role="tab" id="t3" aria-controls="d3" aria-selected="false"><b>D3</b>10/3 六</button>
+  <button role="tab" id="t4" aria-controls="d4" aria-selected="false"><b>D4</b>10/4 日</button>
+  <button role="tab" id="t5" aria-controls="kit" aria-selected="false"><b>工具</b>小幫手</button>
+</nav>
+
+<!-- ======================= D1 ======================= -->
+<section class="day on" id="d1" role="tabpanel" aria-labelledby="t1" data-line="var(--l1)">
+  <div class="dayhead"><h2>抵達 · 南浦洞</h2><span class="date">10/1 週四</span></div>
+  <div class="rails"><span class="rail r1">1 號線 全程</span><span class="rail rwalk">今天只需要走一條線</span></div>
+
+  <div class="stops">
+    <div class="stop"><span class="t">17:00</span>
+      <h3>金海機場 抵達</h3>
+      <p>提行李、入境預留 45 分鐘。出關後直接叫兩台計程車，不要扛行李搭輕軌。</p>
+    </div>
+    <div class="stop"><span class="t">18:30</span>
+      <h3>飯店 入住</h3>
+      <p>放行李就出門，行李等晚上回來再拆。<br>
+      <span class="move">要換錢的人注意：連山站 5 號出口步行 210m 的 Hyatt Place 6 樓大廳有一台 24 小時 WOWPASS 機（外部人士可用）。金海機場沒有機台，別在機場等。</span></p>
+    </div>
+    <div class="stop"><span class="t">18:50</span>
+      <h3>連山 → 南浦</h3>
+      <p class="move">1 號線直達，12 站、實際 28–35 分鐘。不用轉車。</p>
+    </div>
+    <div class="stop pin"><span class="t">19:35</span>
+      <h3>南浦洞 晚餐</h3>
+      <p>廉航沒有正餐，大家會很餓。先坐下來吃，40 分鐘內解決，再開始逛。</p>
+    </div>
+    <div class="stop pin"><span class="t">20:40</span>
+      <h3>南浦洞 逛街</h3>
+      <p>光復路時尚街、BIFF 廣場、國際市場。路邊獨立門市與美妝店大多開到 21:30–22:00，先逛想買的，別先繞市場。</p>
+      <p class="move">地區限定：Kakao Friends 南浦旗艦店有釜山限定商品區；Olive Young 南浦 Town 店是南部最大之一（開到 22:30，也有 WOWPASS 機）；BIFF 廣場的堅果黑糖餅是這條街的招牌。</p>
+    </div>
+    <div class="stop"><span class="t">22:00</span>
+      <h3>富平罐頭夜市</h3>
+      <p>走過去五分鐘，小吃攤開到 23:00 左右。累了就直接搭 1 號線回連山，不用勉強。</p>
+    </div>
+  </div>
+
+  <div class="fork">
+    <b>可以改，但代價是什麼</b>
+    <div class="fk now">
+      <span class="alt">南浦洞放在第一晚，只逛 2.5 小時</span>
+      <span class="cost">南浦洞逛完大約要 2–3 小時，剛好塞得下；西面要 3–4 小時，所以西面放 D3 一整天。兩邊對調的話，D3 15:00 這個死錨點會把南浦切成兩半。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：第一晚就去吃李載茂披薩本店</span>
+      <span class="cost">本店（光復洞）2025 年出現過排到 600 號、等 5 小時以上，而且 20:30 就 last order。19:35 才到南浦，現場排隊等於賭運氣。披薩已改排 D3 西面分店，全員都吃得到。真的想吃本店味道，光復洞有外帶專門店，可以買了邊逛邊吃。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：晚餐吃富平豬腳一條街</span>
+      <span class="cost">六人分食一大盤最划算，但要坐 1 小時以上。等於用國際市場那段換一頓正式的晚餐。想這樣就把它當今晚主場，別兩個都要。</span>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>今晚吃什麼（要快、要暖胃）</h3>
+    <div class="opt star">
+      <div class="nm">豬肉湯飯 <span>돼지국밥</span></div>
+      <p class="why">釜山的代表食物，一人一鍋、上桌快、20 分鐘吃完。不敢吃內臟味的可以點「수육백반」（水煮肉切片＋飯）。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">雪濃湯／牛骨湯 <span>설렁탕</span></div>
+      <p class="why">全程最清淡的一餐，兩位長輩剛下飛機吃這個最舒服。不辣、不油。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">小麥冷麵 <span>밀면</span></div>
+      <p class="why">釜山獨有的麵，比平壤冷麵便宜也親切。天氣還熱的話很解膩，湯冷麵記得說不要辣。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">富平豬腳一條街 <span>부평 족발골목</span></div>
+      <p class="why">六人分食一大盤最划算，但要坐 1 小時以上，會吃掉逛街時間。想吃就把它當今晚主餐，捨棄國際市場。</p>
+    </div>
+    <div class="snacks">
+      <b>邊走邊吃的：</b>堅果黑糖餅 씨앗호떡（BIFF 廣場招牌）· 拌冬粉 비빔당면 · 釜山魚板 어묵 · 糖餅旁的辣炒年糕 떡볶이
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>點一下複製，直接給店員看</h3>
+    <div class="snacks" style="background:#fff">
+      <button class="kchip" data-k="여섯 명인데 자리 있나요?">여섯 명인데 자리 있나요?<span class="zh">我們六個人，有位子嗎？</span></button>
+      <button class="kchip" data-k="안 맵게 해주세요.">안 맵게 해주세요.<span class="zh">請不要做辣的</span></button>
+      <button class="kchip" data-k="카드 결제 되나요?">카드 결제 되나요?<span class="zh">可以刷卡嗎？</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= D2 ======================= -->
+<section class="day" id="d2" role="tabpanel" aria-labelledby="t2" data-line="var(--dh)">
+  <div class="dayhead"><h2>機張 · 汗蒸幕 · 韓牛</h2><span class="date">10/2 週五</span></div>
+  <div class="rails"><span class="rail r1">1 號線</span><span class="rail rd">東海線</span><span class="rail r2">2 號線</span><span class="rail r3">3 號線</span></div>
+
+  <div class="stops">
+    <div class="stop"><span class="t">10:00</span>
+      <h3>飯店出發</h3>
+      <p class="move">連山 →（1 號線 3 站）釜田 → 換東海線 → OSIRIA。全程約 65 分鐘。東海線是 Korail，交通卡可以直接刷。</p>
+    </div>
+    <div class="stop pin"><span class="t">11:15</span>
+      <h3>機張 斜坡滑車</h3>
+      <p>今天是平日，人潮比連假輕鬆很多。<b>買 3–4 趟</b>：第一趟是熟悉操作，速度限制較嚴，第二趟之後才好玩。<br>
+      <b>必須穿包鞋</b>，涼鞋、拖鞋、高跟鞋不能上車；長髮綁起來，眼鏡建議用繩子固定。身高 110 公分以上可自己駕駛。</p>
+    </div>
+    <div class="stop"><span class="t">13:20</span>
+      <h3>海東龍宮寺</h3>
+      <p>從滑車出口步行就到，蓋在海崖上的寺廟，是這天拍照最好看的一站。</p>
+    </div>
+    <div class="stop pin"><span class="t">14:20</span>
+      <h3>Osiria 周邊 午餐</h3>
+      <p>見下方選項。吃完就往回走，不要在東釜山耗到傍晚。</p>
+    </div>
+    <div class="stop"><span class="t">15:40</span>
+      <h3>移動至 Centum City</h3>
+      <p class="move">東海線 → 貝克斯科 → 換 2 號線一站到 Centum City。約 30 分鐘，站內地下街直通新世界百貨。</p>
+    </div>
+    <div class="stop pin"><span class="t">16:20</span>
+      <h3>SPA LAND 汗蒸幕</h3>
+      <p>新世界百貨 1 樓。基本票四小時，但<b>只泡到 19:00 就走</b>，晚餐才不會拖到太晚。<br>
+      館內用手環結帳、離場統一付款。大型行李不能帶進置物櫃區，要寄在售票處前的行李櫃。<br>
+      搓澡（세신）另外收費、現場排。全身或大面積刺青可能被拒絕入場。</p>
+    </div>
+    <div class="stop pin"><span class="t">19:25</span>
+      <h3>民樂洞 韓牛燒烤</h3>
+      <p class="move">2 號線一站到民樂。這是全程最貴也最值得坐下來的一餐。</p>
+    </div>
+    <div class="stop"><span class="t">21:00</span>
+      <h3>廣安里海邊 · 廣安大橋</h3>
+      <p>從餐廳走到海灘就幾分鐘，橋的燈光會變色。散步半小時剛好。</p>
+    </div>
+    <div class="stop"><span class="t">21:45</span>
+      <h3>回飯店</h3>
+      <p class="move">廣安 →（2 號線）水營 → 換 3 號線 → 連山，約 15 分鐘。</p>
+    </div>
+  </div>
+
+  <div class="fork">
+    <b>可以改，但代價是什麼</b>
+    <div class="fk now">
+      <span class="alt">SPA LAND 只泡 2 小時 40 分，不泡滿四小時</span>
+      <span class="cost">因為韓牛燒烤只剩今晚能排：D1 在南浦、D3 術後不能吃烤肉、D4 中午就走。要泡滿就得放棄韓牛，或把韓牛拖到 21:00 之後（民樂那幾家 22:00 打烊，來不及）。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：午餐吃機張市場帝王蟹</span>
+      <span class="cost">機張本來就是產地，價格比市區觀光店合理。但要坐 1.5 小時以上，SPA LAND 會被壓到 2 小時內；而且今晚已經是韓牛，一天兩頓大餐，六人預算大概要多抓 ₩250,000 以上。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：加海雲台海水浴場</span>
+      <span class="cost">只能砍海東龍宮寺換——但龍宮寺就在滑車出口旁邊，零交通成本，砍掉很虧。另外海雲台的招牌之一是天空膠囊／海岸列車，那項已經排除了。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：買 Visit Busan Pass 省門票</span>
+      <span class="cost">這趟只用得到滑車和 SPA LAND 兩項，加起來差不多就是 24 小時 Pass 的價錢（Pass 約 ₩51,000–55,000），而且 Pass 只換得到滑車<b>二次券</b>，我們排 3–4 趟。除非再加樂天世界或海岸列車，否則不划算。</span>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>午餐 · Osiria 周邊</h3>
+    <div class="opt star">
+      <div class="nm">東釜山 Outlet 美食街 <span>롯데프리미엄아울렛 동부산</span></div>
+      <p class="why">最保險的選擇：座位多、有冷氣、六個人不用等、口味各自選，順便逛一圈。玩完滑車全身汗的時候會很感謝這個決定。裡面也有一台 WOWPASS 機。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">機張海鮮／蟹料理 <span>기장 대게</span></div>
+      <p class="why">機張本來就是蟹產地，價格比市區的觀光店合理。想吃海鮮的話這裡吃比咋嘎其划算，但坐得久，看上面那格的代價。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">竹城教堂 海景咖啡 <span>죽성성당</span></div>
+      <p class="why">拍照第一名，但只有輕食。當成午餐會吃不飽，適合「先吃一頓再過來喝咖啡」。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">松亭 烤貝 <span>송정 조개구이</span></div>
+      <p class="why">東海線松亭站附近。海邊烤貝很有氣氛，但要坐久，會壓縮汗蒸幕時間。</p>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>晚餐 · 韓牛燒烤（今天的重點）</h3>
+    <div class="opt star">
+      <div class="nm">한우일번지 × 규이치 식육식당 <span>民樂水邊路 OK타운 3 樓</span></div>
+      <p class="why"><b>首選。</b>精肉食堂形式，自己到肉櫃挑等級和部位，看得到廣安里海面，有包廂，開到 22:00。六個人加兩位長輩，包廂比大廳舒服得多——但海景位一定要事先訂。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">원조철마한우로스구이 <span>民樂本洞路19巷 66</span></div>
+      <p class="why">沒有海景，換來的是更親民的價位和更穩的肉，店員會講英文，開到凌晨。走到海邊五分鐘。想把預算花在肉上就選這家。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">안녕한우 센텀점 <span>海雲大路 222</span></div>
+      <p class="why">離 SPA LAND 最近，但 21:30 就關，而且吃完要繞回廣安里看橋。時間會比較趕。</p>
+    </div>
+    <div class="snacks">
+      <b>預算：</b>1++ 韓牛約 ₩70,000–120,000／公斤，吃得盡興一人 ₩50,000–80,000，六人抓 <b>₩350,000–500,000</b>（約台幣 8,000–11,500）。精肉食堂通常另收小菜桌費 상차림비，一人 ₩3,000–5,000。<br>
+      <b>訂位：</b>CatchTable 或 Naver 訂位，或請飯店幫打電話。10/2 是週五晚上，當天走過去很可能沒位子。<br>
+      <b>換錢：</b>民樂海邊的 CU민락해변점 有 24 小時 WOWPASS 機。
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>滑車與汗蒸幕用</h3>
+    <div class="snacks" style="background:#fff">
+      <button class="kchip" data-k="세 번 타는 걸로 여섯 명 주세요.">세 번 타는 걸로 여섯 명 주세요.<span class="zh">六個人，各要三次券</span></button>
+      <button class="kchip" data-k="사물함 어디예요?">사물함 어디예요?<span class="zh">置物櫃在哪裡？</span></button>
+      <button class="kchip" data-k="캐리어 맡길 수 있나요?">캐리어 맡길 수 있나요?<span class="zh">行李可以寄放嗎？</span></button>
+      <button class="kchip" data-k="창가 자리로 예약했어요.">창가 자리로 예약했어요.<span class="zh">我訂的是靠窗的位子</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= D3 ======================= -->
+<section class="day" id="d3" role="tabpanel" aria-labelledby="t3" data-line="var(--l1)">
+  <div class="dayhead"><h2>西面 · 購物與預約行程</h2><span class="date">10/3 週六 · 開天節</span></div>
+  <div class="rails"><span class="rail r1">1 號線</span><span class="rail rwalk">今天幾乎都在西面走路</span></div>
+
+  <div class="stops">
+    <div class="stop"><span class="t">09:30</span>
+      <h3>起床、前往西面</h3>
+      <p>全程唯一要早起的一天，為的是免稅店。<span class="move">連山 → 西面：1 號線 4 站、9 分鐘。</span></p>
+    </div>
+    <div class="stop pin"><span class="t">10:45</span>
+      <h3>樂天免稅店</h3>
+      <p>西面樂天百貨 8 樓，西面站 7 號出口步行 3 分。<b>它比百貨早關</b>，各家資料寫 18:30 到 19:30 不一，總之你們在裡面的那段時間它就關了，只有今天上午這個機會。<br>
+      買了不會馬上拿到，<b>10/4 在金海機場出境時領貨</b>，要帶護照和登機證。<br>
+      <span class="move">同一棟 1 樓後門退稅處旁邊有 WOWPASS 機（10:30–20:30，可以投台幣換韓元）。</span></p>
+    </div>
+    <div class="stop pin"><span class="t">12:15</span>
+      <h3>李載茂披薩 <span style="font-weight:400;color:var(--muted);font-size:.85rem">이재모피자 · 西面</span></h3>
+      <p>1992 年開到現在的釜山傳奇，招牌是<b>起司餅邊（치즈크러스트）</b>，用韓國本土伊姆實起司，牽絲就是靠這個。<br>
+      <b>西面有三家分店</b>（서면점、서면중앙점、서면2호점／별관），走路都五分鐘內，哪家在排就換下一家。別館在전포대로 207、10:00–21:10（20:30 last order）、週日休——10/3 是週六，有開。<br>
+      術前這餐吃披薩剛好：不辣、不油煙，不會一身味道進去。</p>
+    </div>
+    <div class="stop pin"><span class="t">13:15</span>
+      <h3>西面 逛街（主場）</h3>
+      <p><b>要試穿衣服的都排在這段</b>——術後臉紅、可能腫，不會想套頭進出。</p>
+      <p class="move">地區限定：MUSINSA STANDARD 西面店是韓國最大線上潮流平台的實體旗艦；Olive Young 西面 Town 店是釜山最大的美妝旗艦（開到 23:00）；西面地下街是平價鞋包挖寶區，一路連到 NC 百貨與樂天百貨。</p>
+    </div>
+    <div class="stop pin"><span class="t">15:00</span>
+      <h3>西面 預約行程</h3>
+      <p>預估 3 小時、18:00 結束。帶護照。<br>
+      術後當天：不能碰高溫與蒸氣、避免酒精和過辣、加強保濕、出門遮陽。</p>
+    </div>
+    <div class="stop"><span class="t">15:15</span>
+      <h3>田浦咖啡街</h3>
+      <p>逗留組的三小時空窗。從西面走過去 15 分鐘，選物店和咖啡廳很密。走遠一點就是釜山市民公園。</p>
+      <p class="move">地區限定：Object、Luft 這類獨立選品店與古著店集中在這一帶，是釜山最有設計感的街區。李載茂披薩전포점也在這附近，中午沒排到的話這裡可以補。</p>
+    </div>
+    <div class="stop pin"><span class="t">18:30</span>
+      <h3>集合晚餐</h3>
+      <p>今天不吃烤肉。四個人剛做完療程，煙、油、熱氣加上燒酒，隔天會後悔。</p>
+    </div>
+    <div class="stop"><span class="t">19:45</span>
+      <h3>地下街補買</h3>
+      <p>假日樂天百貨開到 20:30，西面地下街到 22:00。這段收美妝、保養、伴手禮，不試穿。</p>
+    </div>
+  </div>
+
+  <div class="fork">
+    <b>可以改，但代價是什麼</b>
+    <div class="fk now">
+      <span class="alt">上午 10:45–12:15 排樂天免稅店</span>
+      <span class="cost">免稅店比百貨早關，你們 15:00 進去之後它就關了——整趟只有這個上午買得到，而且要 10/3 買完才來得及 10/4 在金海機場領貨。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：拿掉免稅店，西面從 10:00 開始逛</span>
+      <span class="cost">多出 1.5 小時，術前試穿更從容（西面認真逛要 3–4 小時，現在只給 2 小時）。代價是菸酒香水化妝品只能改在 10/4 金海機場現場買，品項和價格都比市區免稅店差。<b>沒人要買免稅品的話，這個換法是賺的。</b></span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：免稅店只給 45 分鐘</span>
+      <span class="cost">折衷。事先在群組把要買的品牌品項列好，到現場直接結帳不逛。省下 45 分鐘還給西面。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：術後晚餐還是吃烤肉</span>
+      <span class="cost">不建議。療程當天，煙燻熱氣＋酒精＋辣會讓腫脹更明顯，隔天照鏡子會後悔。烤肉已經排在 D2 的韓牛了，那餐比西面任何一家都好。</span>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>午餐 · 術前吃飽（披薩是主場，以下是備案）</h3>
+    <div class="opt star">
+      <div class="nm">李載茂披薩 <span>이재모피자</span></div>
+      <p class="why">今天的必吃項。六人建議點兩個大的＋起司餅邊，配可樂。上桌快，吃完直接走去逛街。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">排骨湯 <span>갈비탕</span></div>
+      <p class="why">三家分店都在排的話改吃這個。有肉、有湯、不辣，六個人都吃得下，也不會像烤肉那樣一身味道過去。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">小麥冷麵＋餃子 <span>밀면 + 만두</span></div>
+      <p class="why">上桌最快，吃完還有時間再逛一輪地下街。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">泡菜鍋／大醬鍋 <span>김치찌개 / 된장찌개</span></div>
+      <p class="why">最日常的韓式定食，附小菜和飯。要做療程的人記得別點太辣。</p>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>晚餐 · 術後（避開烤肉、辣、酒）</h3>
+    <div class="opt star">
+      <div class="nm">蔘雞湯 <span>삼계탕</span></div>
+      <p class="why">完全不辣、溫補、湯多，術後第一餐最合適。整隻雞上桌，長輩會很滿意。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">雪濃湯／牛肉湯飯 <span>설렁탕 / 곰탕</span></div>
+      <p class="why">清爽、好消化，自己調鹹淡。想吃輕一點的選這個。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">韓式粥 <span>본죽</span></div>
+      <p class="why">連鎖粥店，鮑魚粥、南瓜粥都有。做完療程完全沒胃口的人可以吃這個，其他人吃別的。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">水冷麵 <span>물냉면</span></div>
+      <p class="why">冰涼、消腫、不刺激。注意別點 비빔냉면（辣拌的）。</p>
+    </div>
+    <div class="snacks">
+      <b>不要排：</b>烤肉 고기집 · 辣炒雞 닭갈비 · 部隊鍋 부대찌개 · 燒酒 소주 · 汗蒸幕與任何三溫暖
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>現場溝通用</h3>
+    <div class="snacks" style="background:#fff">
+      <button class="kchip" data-k="세 시 예약했어요. 네 명이에요.">세 시 예약했어요. 네 명이에요.<span class="zh">我們預約 3 點，四個人</span></button>
+      <button class="kchip" data-k="여권 여기 있어요.">여권 여기 있어요.<span class="zh">護照在這裡</span></button>
+      <button class="kchip" data-k="시술 후에 주의할 점 알려주세요.">시술 후에 주의할 점 알려주세요.<span class="zh">請告訴我術後要注意什麼</span></button>
+      <button class="kchip" data-k="치즈크러스트로 주세요.">치즈크러스트로 주세요.<span class="zh">請給我起司餅邊的</span></button>
+      <button class="kchip" data-k="지금 웨이팅 얼마나 걸려요?">지금 웨이팅 얼마나 걸려요?<span class="zh">現在要等多久？</span></button>
+      <button class="kchip" data-k="택스 리펀 되나요?">택스 리펀 되나요?<span class="zh">可以退稅嗎？</span></button>
+      <button class="kchip" data-k="입어봐도 되나요?">입어봐도 되나요?<span class="zh">可以試穿嗎？</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= D4 ======================= -->
+<section class="day" id="d4" role="tabpanel" aria-labelledby="t4" data-line="var(--l3)">
+  <div class="dayhead"><h2>返程</h2><span class="date">10/4 週日</span></div>
+  <div class="rails"><span class="rail rwalk">飯店步行圈</span><span class="rail r3">計程車直達機場</span></div>
+
+  <div class="stops">
+    <div class="stop"><span class="t">09:00</span>
+      <h3>起床</h3>
+      <p>行李前一晚就要收好，今天沒有彈性空間。</p>
+    </div>
+    <div class="stop pin"><span class="t">09:30</span>
+      <h3>連山洞 早餐</h3>
+      <p>飯店步行圈內解決。<b>不要拖著行李跑去西面吃</b>——那會讓整個上午變成賭博。</p>
+    </div>
+    <div class="stop"><span class="t">10:15</span>
+      <h3>退房</h3>
+      <p>退房時限 12:00，但別拖到那時候。<br>
+      <span class="move">WOWPASS 卡有餘額的話，連山站那台就在旁邊，順路領完再走。</span></p>
+    </div>
+    <div class="stop"><span class="t">10:45</span>
+      <h3>計程車 → 金海機場</h3>
+      <p class="move">兩台，連假週日約 40 分鐘。</p>
+    </div>
+    <div class="stop pin"><span class="t">11:25</span>
+      <h3>報到 · 領免稅品</h3>
+      <p>BX791 報到，順便到免稅品領取櫃檯拿 10/3 在西面買的東西（護照＋登機證）。機場免稅店還能補買。<br>
+      術後皮膚怕乾，面膜和保濕噴霧放隨身行李。</p>
+    </div>
+    <div class="stop"><span class="t">14:15</span>
+      <h3>金海 → 桃園 T2</h3>
+      <p>15:45 抵達。</p>
+    </div>
+  </div>
+
+  <div class="fork">
+    <b>可以改，但代價是什麼</b>
+    <div class="fk now">
+      <span class="alt">最後一天什麼景點都不排</span>
+      <span class="cost">14:15 的飛機、連假最後一天、六個人六件行李。留白不是懶，是保險。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：早上加甘川洞文化村</span>
+      <span class="cost">來回加參觀至少 2.5 小時，而且甘川洞在西邊山上、機場在西邊平地，看似順路實際要換兩次車或多叫一趟計程車。連假最後一天塞車，整個返程會變成賭博。真的想去，只有把它換掉 D1 南浦洞這條路可走。</span>
+    </div>
+    <div class="fk">
+      <span class="alt">想改成：早上去樂天超市／E-Mart 採買</span>
+      <span class="cost">可行但不必要。連山洞飯店步行圈就有超市和便利商店，泡麵海苔零食那些在哪買都一樣，不用專程跑。真要大採買，D3 晚上地下街那段順手買比較安全。</span>
+    </div>
+  </div>
+
+  <div class="meals">
+    <h3>最後一餐</h3>
+    <div class="opt star">
+      <div class="nm">豬肉湯飯 <span>돼지국밥</span></div>
+      <p class="why">連山洞有幾家 24 小時營業，九點半就能坐下來。用釜山的招牌收尾很合理。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">黃豆芽湯飯 <span>콩나물국밥</span></div>
+      <p class="why">前一晚有人喝了酒的話，這是韓國人的標準解酒餐。清爽、便宜、快。</p>
+    </div>
+    <div class="opt">
+      <div class="nm">連鎖麵包店 <span>파리바게뜨 / 뚜레쥬르</span></div>
+      <p class="why">不想吃湯的、想省時間的選這個。也可以順手買機上吃的。</p>
+    </div>
+    <div class="snacks">
+      <b>金海機場：</b>國際航廈有美食街和便利商店，11:25 到機場還有兩小時半，不趕。
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 小幫手 ======================= -->
+<section class="kit" id="kit" role="tabpanel" aria-labelledby="t5">
+  <h2>小幫手</h2>
+
+  <div class="card">
+    <h3>出發前先訂什麼（KKday／Klook）</h3>
+    <div class="body">
+      <table>
+        <tr><th>斜坡滑車</th><td><b>建議先訂。</b>線上比現場便宜（三次券成人線上約 ₩28,500、現場 ₩30,000；二次券約 ₩25,650／₩27,000）。10/2 是連假前一天，人潮難料。價格出發前再確認一次。</td></tr>
+        <tr><th>SPA LAND</th><td><b>建議先訂。</b>線上票通常比現場便宜，掃碼進場不用排售票機。</td></tr>
+        <tr><th>eSIM</th><td><b>一定要先訂。</b>安裝過程需要網路，到韓國才想裝會卡住。</td></tr>
+        <tr><th>機場接送</th><td>可選。六個人兩台計程車現場叫也很快，不一定要預約。想省事就訂，價差不大。</td></tr>
+        <tr><th>Visit Busan Pass</th><td><b>不建議。</b>理由見 D2 那格的取捨。</td></tr>
+        <tr><th>韓牛餐廳</th><td>不在 KKday 上，要用 CatchTable／Naver 訂位，或請飯店代打電話。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>出發前先裝好的 App</h3>
+    <div class="body">
+      <div class="app">
+        <div class="ic" style="background:#F9E000;color:#3A1D1D">Kakao<br>Map</div>
+        <div>
+          <div class="nm">KakaoMap 或 Naver Map <em>카카오맵 / 네이버 지도</em> <span class="must">必裝</span></div>
+          <div class="ds">Google Maps 在韓國查不到步行和公車路線，這是最常見的踩雷。兩個選一個裝就好，介面都有中文。搜店名建議用韓文（可從本頁複製）。</div>
+        </div>
+      </div>
+      <div class="app">
+        <div class="ic" style="background:#000">T</div>
+        <div>
+          <div class="nm">Kakao T <em>카카오 T</em> <span class="must">必裝</span></div>
+          <div class="ds">韓國的叫車 App，路邊招不到車時靠它。需要手機號碼收簡訊驗證，所以台灣號碼要保持能收國際簡訊。綁信用卡就能直接付。</div>
+        </div>
+      </div>
+      <div class="app">
+        <div class="ic" style="background:#00C73C">P</div>
+        <div>
+          <div class="nm">Papago <em>파파고</em> <span class="must">必裝</span></div>
+          <div class="ds">Naver 的翻譯，韓文比 Google 準。相機功能可以直接掃菜單和藥品說明，現場溝通也用得上。</div>
+        </div>
+      </div>
+      <div class="app">
+        <div class="ic" style="background:#FAE100;color:#3A1D1D">Talk</div>
+        <div>
+          <div class="nm">KakaoTalk <em>카카오톡</em></div>
+          <div class="ds">韓國的 LINE。店家、餐廳、包車司機幾乎都用它聯絡，加一下比打電話省事。</div>
+        </div>
+      </div>
+      <div class="app">
+        <div class="ic" style="background:#FF3B5C">CT</div>
+        <div>
+          <div class="nm">CatchTable <em>캐치테이블</em></div>
+          <div class="ds">韓國主流訂位平台，韓牛餐廳和李載茂披薩都在上面。部分店家要韓國號碼，訂不了就改用 Naver 訂位或請飯店代打。</div>
+        </div>
+      </div>
+      <div class="app">
+        <div class="ic" style="background:#0B4F9E">地鐵</div>
+        <div>
+          <div class="nm">Subway Korea <em>또는 부산 도시철도</em></div>
+          <div class="ds">離線也能查路線和轉乘時間。這趟會用到 1、2、3 號線和東海線，四條都在裡面。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>交通卡：買 Cashbee 就夠</h3>
+    <div class="body">
+      <p><b>Cashbee 캐시비</b>：便利商店（CU、GS25、7-ELEVEN）就買得到，卡片本身約 ₩2,500–4,000，現金儲值。釜山地鐵、公車、<b>東海線</b>全部通刷，刷卡轉乘還有折扣。</p>
+      <p><b>首爾帶來的 T-money 也能用</b>，不用重買。</p>
+      <p><b>一日券（₩6,000）這趟不要買</b>：它<b>不含東海線</b>，而 10/2 去機張整天都靠東海線，買了反而虧。</p>
+      <p>每人一張，全程儲值 ₩20,000–25,000 綽綽有餘。剩額可在便利商店退（會收手續費），或留著下次來。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>WOWPASS：機場辦不到，但住處樓下就有</h3>
+    <div class="body">
+      <p>WOWPASS 是外國人專用的預付卡，把「換匯＋刷卡＋交通卡」三合一。可以直接投台幣紙鈔，按當下匯率換成韓元存進卡裡，通常比在台灣換現金划算。</p>
+      <p><b>金海機場沒有機台。</b>官方機台清單全國 433 台，機場只有仁川 T1／T2、金浦、大邱、濟州有，金海不在其中。網路上說「金海機場一落地就能開卡」的是錯的，不要照那個規劃。</p>
+      <p><b>但釜山市區有 60 台，而且這趟動線上到處都是：</b></p>
+      <table>
+        <tr><th>連山（住處）</th><td>Hyatt Place 釜山連山，連山站 5 號出口 210m、6 樓大廳，<b>24 小時、外部人士可用</b>。落地當晚辦最順。</td></tr>
+        <tr><th>西面</th><td>樂天百貨釜山本店 1F 後門退稅處旁（10:30–20:30，雙向換匯）· Olive Young 西面 Town 店（10:00–23:00）</td></tr>
+        <tr><th>南浦</th><td>Olive Young 南浦 Town 店（10:00–22:30）· 樂天百貨光復店 · GS25 자갈치점（24 小時）</td></tr>
+        <tr><th>Centum City</th><td>Olive Young 釜山 Centum 店（10:00–22:30）</td></tr>
+        <tr><th>民樂（D2 韓牛）</th><td>CU민락해변점（24 小時）</td></tr>
+        <tr><th>東釜山（D2 午餐）</th><td>樂天 Premium Outlet 東釜山店（10:30–21:00）</td></tr>
+      </table>
+      <p style="margin-top:10px"><b>辦不辦？</b>四天三夜、六個人，<b>一張國際信用卡＋一張 Cashbee ＋少量現金</b>就完全夠用，每人 ₩100,000–150,000 現金即可。WOWPASS 適合「不想在台灣換那麼多現金、想要好一點匯率」的人。要辦就落地當晚在連山那台辦，不用擠機場。</p>
+      <p><b>離境退款：</b>只能退回韓元現金、每次扣 ₩1,000 手續費，而且只退「刷卡金」錢包，交通卡錢包要去便利商店退。最划算的做法是回國前把卡刷到接近零。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>eSIM 與網路</h3>
+    <div class="body">
+      <p>韓國實際上只有三家電信：<b>SKT、KT、LG U+</b>。所有 eSIM 品牌都是租這三家的網路，<b>選哪個平台不重要，看清楚背後是哪家網路才重要</b>——SKT 和 KT 在釜山市區與東海線沿線都穩。</p>
+      <table>
+        <tr><th>最省事</th><td><b>Klook eSIM</b>（KT 網路）。中文介面、一鍵安裝、24 小時中文客服，不穩可退。新手和兩位長輩選這個。</td></tr>
+        <tr><th>最便宜</th><td><b>KKday</b> 同規格通常比 Klook 便宜一些，但部分方案要到機場櫃檯領卡，落地會多一站。買之前看清楚是「線上發送 QR」還是「機場領取」。</td></tr>
+        <tr><th>要飆速</th><td><b>SKT 原廠 eSIM 吃到飽</b>。四天方案約台幣 500–600 上下。價格常變動，出發前以平台頁面為準。</td></tr>
+        <tr><th>選多少流量</th><td>每日 1–2GB 就夠。導航、社群、翻譯都不吃流量，除非要一直開直播。</td></tr>
+        <tr><th>什麼時候裝</th><td><b>在台灣就要先掃 QR 安裝</b>（安裝過程需要網路），落地後再啟用。到了韓國才想裝會卡住。</td></tr>
+        <tr><th>手機要求</th><td>iPhone XS 以後、Pixel 3 以後、近年三星旗艦支援 eSIM。不確定就到「設定 → 行動網路」看有沒有「加入 eSIM」。</td></tr>
+        <tr><th>台灣號碼</th><td>eSIM 是雙卡運作，<b>台灣號碼要保留並開啟國際漫遊簡訊</b>，Kakao T 驗證和刷卡通知都靠它。語音漫遊可以關掉。</td></tr>
+      </table>
+      <p style="margin-top:10px"><b>六個人為什麼不租 WiFi 分享器：</b>分享器要求全隊一起行動，而 10/3 下午你們會分成療程組和逛街組，分開之後有一組會斷網。這趟用 eSIM。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>退稅與免稅</h3>
+    <div class="body">
+      <p><b>免稅店（10/3 西面樂天 8F）：</b>當場付款、不帶走，10/4 在金海機場出境後的領取櫃檯拿貨，需要護照和登機證。所以要在 10/3 買完。</p>
+      <p><b>一般店家退稅：</b>看到 <b>TAX FREE</b> 標誌就可以問。金額門檻和「當場退」還是「機場退」的規則常常在改，<b>結帳時直接問店員最準</b>，別預設。要退稅一定要出示護照，收據和退稅單收好。</p>
+      <p><b>療程退稅：</b>部分醫療觀光指定機構的療程可以退，這件事直接問對方，順便問要不要準備護照影本。</p>
+      <p><b>Olive Young</b> 通常在店內就能辦即時退稅，六個人分開結帳不如集中結帳容易過門檻。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>禮節與禁忌（會被看出來的那幾件）</h3>
+    <div class="body">
+      <table>
+        <tr><th>垃圾桶</th><td>街上幾乎沒有公用垃圾桶。隨身帶個小塑膠袋裝自己的垃圾，回飯店或便利商店再丟。</td></tr>
+        <tr><th>博愛座</th><td>地鐵車廂兩端的博愛座和孕婦專用座，就算空著當地人也不會去坐。空著也別坐。</td></tr>
+        <tr><th>吃飯</th><td>碗放在桌上吃，不捧碗——捧碗在韓國是乞討的姿勢。用湯匙吃飯和湯，筷子夾菜，不要用筷子插飯。</td></tr>
+        <tr><th>小菜</th><td>免費，吃完可以續，但別點了一桌不吃。續小菜說「밑반찬 좀 더 주세요」。</td></tr>
+        <tr><th>倒酒</th><td>晚輩幫長輩倒，雙手拿瓶；長輩倒給你要雙手接。喝的時候側身避開長輩方向。這趟有兩位長輩，年輕人記得動作。</td></tr>
+        <tr><th>脫鞋</th><td>汗蒸幕、部分傳統餐廳（地板座位）、民宿要脫鞋。10/2 去 SPA LAND 那天，襪子穿好看一點的。</td></tr>
+        <tr><th>拍照</th><td>店內、傳統市場攤位拍照前先問一聲。診療場所內部通常不能拍。</td></tr>
+        <tr><th>小費</th><td>不用給。餐廳、計程車、飯店都沒有小費文化，硬要給反而尷尬。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>雜事</h3>
+    <div class="body">
+      <table>
+        <tr><th>插座</th><td>220V、60Hz、圓形兩孔（歐規 C／F）。台灣的扁腳插頭插不進去，要帶轉接頭。吹風機之類高功率電器要確認有雙電壓標示。飯店櫃台通常可以借轉接頭，但六個人別賭。</td></tr>
+        <tr><th>天氣</th><td>10 月初釜山大約 18–25°C，日夜溫差大。滑車和廣安里海邊都在戶外，帶薄外套。出發前三天再看預報決定要不要帶傘。</td></tr>
+        <tr><th>行李額度</th><td>去回程都是廉航，通常託運 15 公斤。買太多的話回程超重會被收錢，先確認自己那張機票的額度。</td></tr>
+        <tr><th>時差</th><td>韓國比台灣快 1 小時。行程表上寫的都是當地時間。</td></tr>
+        <tr><th>現金</th><td>韓國連路邊攤都刷卡，但傳統市場、小吃攤、交通卡儲值還是要現金。每人 ₩100,000–150,000 足夠。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>出狀況的時候</h3>
+    <div class="body">
+      <table>
+        <tr><th>1330</th><td>韓國觀光公社旅遊諮詢熱線，24 小時，<b>有中文服務</b>。迷路、找店、溝通不了都可以打，也能三方通話幫你跟店家講。</td></tr>
+        <tr><th>112 / 119</th><td>警察／消防與救護。</td></tr>
+        <tr><th>台灣急難救助</th><td>旅外國人急難救助全球免付費專線：韓國國際冠碼 + 800-0885-0885。僅限車禍、搶劫、生命安危等真正緊急狀況。</td></tr>
+        <tr><th>證件遺失</th><td>先報警取得報案證明，再聯絡駐韓國台北代表部釜山辦事處。出發前把護照資料頁拍照存手機和雲端各一份。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>這趟沒排什麼，以及為什麼</h3>
+    <div class="body">
+      <table>
+        <tr><th>天空膠囊</th><td>指定排除，沒排。海雲台藍線公園的海岸列車同理。</td></tr>
+        <tr><th>海雲台</th><td>要塞只能砍海東龍宮寺（就在滑車出口旁，零交通成本），不划算。而且海雲台的招牌之一正是已排除的天空膠囊。</td></tr>
+        <tr><th>帝王蟹</th><td>列為 D2 午餐的選項之一（機張是產地，比市區划算），但沒排成固定行程——當晚就是韓牛燒烤，一天兩頓大餐，預算和時間都會爆。</td></tr>
+        <tr><th>甘川洞文化村</th><td>只有 D4 上午塞得下，但那天是連假最後一天＋14:15 的飛機＋六件行李。真的想去，只能拿 D1 南浦洞去換。</td></tr>
+        <tr><th>札嘎其市場</th><td>南浦洞旁邊，但生魚片要坐得久。D1 只有 2.5 小時，逛街和吃海鮮二選一，這趟選逛街。</td></tr>
+        <tr><th>Visit Busan Pass</th><td>算過不划算，見 D2 那格。</td></tr>
+        <tr><th>白淺灘、松島纜車</th><td>都在影島／西南邊，跟這趟的 1 號線＋東海線動線完全不同方向，加進來要多花一個半天。</td></tr>
+      </table>
+      <p style="margin-top:10px">以上都不是漏掉，是算過之後選擇不排。想改的話上面每一格都寫了代價，看完再提。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>出發前待辦</h3>
+    <div class="body">
+      <ul class="todo">
+        <li><label><input type="checkbox"><span>預約書面確認 10/3 15:00<span class="sub">10/3 是國定假日，請對方用 KakaoTalk 或 email 回明確的日期時間，不要只靠口頭</span></span></label></li>
+        <li><label><input type="checkbox"><span>韓牛餐廳訂位<span class="sub">10/2 晚 19:30、6 人、海景位或包廂</span></span></label></li>
+        <li><label><input type="checkbox"><span>斜坡滑車線上票<span class="sub">每人 3–4 趟</span></span></label></li>
+        <li><label><input type="checkbox"><span>SPA LAND 線上票<span class="sub">線上比現場便宜</span></span></label></li>
+        <li><label><input type="checkbox"><span>李載茂披薩查一下 CatchTable 能不能候位<span class="sub">10/3 是連假第一天，西面三家分店哪家能線上抽號就用哪家</span></span></label></li>
+        <li><label><input type="checkbox"><span>免稅店要買什麼，群組先列清單<span class="sub">10/3 上午只有 1.5 小時，現場才想會來不及</span></span></label></li>
+        <li><label><input type="checkbox"><span>eSIM 在台灣安裝完成<span class="sub">六個人一個一個確認，不要到機場才發現有人沒裝</span></span></label></li>
+        <li><label><input type="checkbox"><span>裝好 KakaoMap、Kakao T、Papago</span></label></li>
+        <li><label><input type="checkbox"><span>圓孔轉接頭、行動電源</span></label></li>
+        <li><label><input type="checkbox"><span>滑車要穿的包鞋</span></label></li>
+        <li><label><input type="checkbox"><span>術後用的面膜與保濕噴霧<span class="sub">放隨身行李，回程機上用</span></span></label></li>
+        <li><label><input type="checkbox"><span>護照資料頁與機票拍照備份</span></label></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  時間都是當地時間。行程有彈性的部分：D1 的富平夜市、D2 的竹城教堂、D3 空窗時段的田浦咖啡街，累了就砍，不影響主要安排。<br>
+  門票價格、店家營業時間會變，出發前一週再對一次。<br>
+  最後更新：2026-09-03
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs button'));
+  var wrap = document.querySelector('.wrap');
+
+  function show(btn){
+    tabs.forEach(function(b){
+      var panel = document.getElementById(b.getAttribute('aria-controls'));
+      var on = (b === btn);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      panel.classList.toggle('on', on);
+    });
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    var ln = panel.getAttribute('data-line');
+    wrap.style.setProperty('--line', ln || 'var(--dh)');
+    document.documentElement.scrollTop = 0;
+  }
+
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){ show(b); });
+    b.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(b), n = null;
+      if(e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+      if(e.key === 'ArrowLeft')  n = tabs[(i-1+tabs.length) % tabs.length];
+      if(n){ e.preventDefault(); n.focus(); show(n); }
+    });
+  });
+
+  // 行程期間自動打開當天
+  var today = new Date();
+  var trip = { '2026-10-01':0, '2026-10-02':1, '2026-10-03':2, '2026-10-04':3 };
+  var key = today.getFullYear() + '-' +
+            String(today.getMonth()+1).padStart(2,'0') + '-' +
+            String(today.getDate()).padStart(2,'0');
+  if(key in trip){ show(tabs[trip[key]]); } else { show(tabs[0]); }
+
+  // 點一下複製韓文
+  document.querySelectorAll('.kchip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var text = chip.getAttribute('data-k');
+      var done = function(){
+        var zh = chip.querySelector('.zh');
+        var old = zh.textContent;
+        chip.classList.add('copied');
+        zh.textContent = '已複製';
+        setTimeout(function(){ chip.classList.remove('copied'); zh.textContent = old; }, 1400);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+      } else {
+        fallback(text, done);
+      }
+    });
+  });
+
+  function fallback(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly','');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch(err) {}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>行程表</title>
+<style>
+:root{--ink:#0F1A2B;--ink-2:#33425A;--muted:#6B788C;--hair:#D8DFE9;--panel:#EDF1F6;--l1:#F06A00}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--panel);color:var(--ink);
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC","Segoe UI","Microsoft JhengHei",sans-serif;
+  font-size:16px;line-height:1.6;font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:640px;margin:0 auto;background:#fff;min-height:100vh}
+:focus-visible{outline:2.5px solid #0B4F9E;outline-offset:2px;border-radius:3px}
+header{background:var(--ink);color:#fff;padding:30px 20px 26px}
+header h1{margin:0;font-size:1.4rem;font-weight:700}
+header p{margin:6px 0 0;color:#9FB1C9;font-size:.86rem}
+main{padding:20px}
+a.trip{
+  display:block;text-decoration:none;color:inherit;
+  border:1px solid var(--hair);border-radius:9px;padding:16px 17px;margin-bottom:12px;
+}
+a.trip:hover{border-color:var(--l1)}
+a.trip .nm{font-size:1.05rem;font-weight:700}
+a.trip .dt{font-size:.85rem;color:var(--muted);margin-top:2px}
+a.trip .go{font-size:.83rem;color:var(--l1);font-weight:600;margin-top:8px}
+footer{padding:18px 20px 40px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>行程表</h1>
+    <p>點進去看當天要去哪、吃什麼、怎麼搭車</p>
+  </header>
+  <main>
+    <a class="trip" href="busan-2026-10/">
+      <div class="nm">釜山 4 天 3 夜</div>
+      <div class="dt">2026 年 10 月 1 日（四）– 10 月 4 日（日）· 6 人</div>
+      <div class="go">打開行程 →</div>
+    </a>
+  </main>
+  <footer>
+    這個頁面沒有加密。網址給誰，誰就看得到。
+  </footer>
+</div>
+</body>
+</html>
