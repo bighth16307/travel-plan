@@ -73,6 +73,11 @@ img{display:block;max-width:100%;filter:saturate(1.06) contrast(1.03)}
   min-width:auto;padding:0 10px;font-size:.75rem;font-weight:700;color:var(--sea);
   border:1px solid #BCD2DE;margin-left:4px;
 }
+/* 320px 這種窄機塞不下，先讓掉「行程表」——每天結尾和頁尾都還有入口，
+   當前天的標籤才是日期條的本體 */
+@media (max-width:360px){
+  .daybar .hops a.full{display:none}
+}
 
 /* ---------- 每天的封面條 ---------- */
 .day{padding:34px 18px 4px;scroll-margin-top:58px}
