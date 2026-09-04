@@ -12,7 +12,7 @@
   --card:#FFFFFF;
   --ink:#241F1A;
   --ink-2:#4A4238;
-  --soft:#857A6B;
+  --soft:#6A5F51;
   --accent:#C4553F;
   --sea:#2C6E8F;
   --tape:#E8D9A8;
@@ -41,13 +41,17 @@ img{display:block;max-width:100%;filter:saturate(1.06) contrast(1.03)}
 .hero .meta{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:7px}
 .hero .meta span{font-size:.74rem;font-weight:600;letter-spacing:.04em;color:#F2E6D2;
   border:1px solid rgba(242,230,210,.42);border-radius:20px;padding:3px 11px}
-.hero .credit{position:absolute;right:10px;top:10px;font-size:.6rem;color:rgba(255,255,255,.5)}
+.hero .credit{
+  position:absolute;right:10px;top:10px;font-size:.68rem;color:#EDE4D5;
+  background:rgba(20,17,13,.5);padding:3px 8px;border-radius:11px;
+}
 
 /* ---------- 導覽 ---------- */
 .jump{display:flex;gap:7px;padding:16px 18px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .jump a{
-  flex:0 0 auto;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.03em;
-  color:var(--ink-2);background:#fff;border:1px solid #E3D8C6;border-radius:20px;padding:6px 13px;
+  flex:0 0 auto;display:flex;align-items:center;min-height:44px;
+  text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.03em;
+  color:var(--ink-2);background:#fff;border:1px solid #E3D8C6;border-radius:22px;padding:0 15px;
 }
 .jump a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -86,10 +90,10 @@ img{display:block;max-width:100%;filter:saturate(1.06) contrast(1.03)}
 .pc h3 em{font-style:normal;display:block;font-size:.8rem;font-weight:600;color:var(--soft);margin-top:3px;letter-spacing:.02em}
 .pc p{margin:8px 0 0;font-size:.9rem;color:var(--ink-2);line-height:1.72}
 .pc .mark{
-  position:absolute;right:14px;bottom:6px;font-size:.58rem;letter-spacing:.16em;
-  color:#C9BCA6;font-weight:700;
+  position:absolute;right:14px;bottom:6px;font-size:.66rem;letter-spacing:.16em;
+  color:#9C8D74;font-weight:700;
 }
-.pc .src{margin:9px 0 0;font-size:.63rem;color:#B4A895;letter-spacing:.02em}
+.pc .src{margin:9px 0 0;font-size:.7rem;color:var(--soft);letter-spacing:.02em}
 
 /* 沒有照片時的插畫框 */
 .pc .draw{width:100%;aspect-ratio:4/5;border-radius:1px;display:block}
@@ -125,8 +129,8 @@ img{display:block;max-width:100%;filter:saturate(1.06) contrast(1.03)}
   padding:15px;border-radius:11px;
 }
 .end .go span{display:block;font-size:.76rem;font-weight:500;opacity:.86;margin-top:3px}
-.credits{background:#12100C;color:#6E6355;padding:22px 22px 40px;font-size:.68rem;line-height:1.85}
-.credits b{color:#8E8272;display:block;margin-bottom:6px;font-size:.72rem;letter-spacing:.06em}
+.credits{background:#12100C;color:#8E8272;padding:22px 22px 40px;font-size:.68rem;line-height:1.85}
+.credits b{color:#B3A794;display:block;margin-bottom:6px;font-size:.72rem;letter-spacing:.06em}
 .credits a{color:#7F8F9C}
 </style>
 </head>
