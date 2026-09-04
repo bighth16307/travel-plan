@@ -62,6 +62,17 @@ a{color:var(--dh)}
 .board .stay{margin:16px 0 0;font-size:.84rem;color:#B9C7DB;border-top:1px solid #2A3A53;padding-top:14px}
 .board .stay b{color:#fff;font-weight:600}
 
+/* ---------- 切到圖文版 ---------- */
+.swap{margin:16px 0 0;border-top:1px solid #2A3A53;padding-top:15px}
+.swap a{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;
+  background:#22344E;border:1px solid #35496A;border-radius:9px;padding:13px 15px;color:#fff;
+}
+.swap a:hover{border-color:#F0C78A}
+.swap .l{font-size:.9rem;font-weight:700}
+.swap .s{display:block;font-size:.76rem;font-weight:400;color:#9FB1C9;margin-top:2px}
+.swap .arrow{color:#F0C78A;font-weight:800;font-size:1.05rem}
+
 /* ---------- 提醒 ---------- */
 .flags{padding:18px 20px 4px;display:grid;gap:10px}
 .flag{border-left:3px solid var(--alert);background:#FCF4F3;padding:11px 13px;border-radius:0 6px 6px 0;font-size:.88rem}
@@ -190,6 +201,13 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
 
   <p class="stay"><b>連山站旁飯店</b>　連山站步行 3 分 · 入住 14:00 / 退房 12:00<br>
   兩段機場接送都叫兩台計程車，每台約 ₩17,000–23,000、40 分鐘。</p>
+
+  <div class="swap">
+    <a href="photo.html">
+      <span class="l">看圖文版<span class="s">大圖、短句、適合先感受一下這趟要去哪</span></span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
 </header>
 
 <section class="flags">
@@ -888,6 +906,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     var ln = panel.getAttribute('data-line');
     wrap.style.setProperty('--line', ln || 'var(--dh)');
     document.documentElement.scrollTop = 0;
+    if(history.replaceState){ history.replaceState(null, '', '#' + panel.id); }
   }
 
   tabs.forEach(function(b){
@@ -900,13 +919,20 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     });
   });
 
-  // 行程期間自動打開當天
+  // 分頁決定順序：網址的 #d2 這種錨點 > 行程期間的當天 > 預設 D1
+  var hashMap = { '#d1':0, '#d2':1, '#d3':2, '#d4':3, '#kit':4 };
   var today = new Date();
   var trip = { '2026-10-01':0, '2026-10-02':1, '2026-10-03':2, '2026-10-04':3 };
   var key = today.getFullYear() + '-' +
             String(today.getMonth()+1).padStart(2,'0') + '-' +
             String(today.getDate()).padStart(2,'0');
-  if(key in trip){ show(tabs[trip[key]]); } else { show(tabs[0]); }
+  if(location.hash in hashMap){ show(tabs[hashMap[location.hash]]); }
+  else if(key in trip){ show(tabs[trip[key]]); }
+  else { show(tabs[0]); }
+
+  window.addEventListener('hashchange', function(){
+    if(location.hash in hashMap){ show(tabs[hashMap[location.hash]]); }
+  });
 
   // 點一下複製韓文
   document.querySelectorAll('.kchip').forEach(function(chip){

@@ -20,14 +20,24 @@ header{background:var(--ink);color:#fff;padding:30px 20px 26px}
 header h1{margin:0;font-size:1.4rem;font-weight:700}
 header p{margin:6px 0 0;color:#9FB1C9;font-size:.86rem}
 main{padding:20px}
-a.trip{
-  display:block;text-decoration:none;color:inherit;
-  border:1px solid var(--hair);border-radius:9px;padding:16px 17px;margin-bottom:12px;
+.trip{border:1px solid var(--hair);border-radius:11px;overflow:hidden;margin-bottom:12px}
+.trip .banner{width:100%;height:140px;object-fit:cover;display:block;filter:saturate(1.06)}
+.trip .body{padding:16px 17px 16px}
+.trip .nm{font-size:1.08rem;font-weight:700}
+.trip .dt{font-size:.85rem;color:var(--muted);margin-top:2px}
+.ways{display:grid;gap:8px;margin-top:15px}
+.way{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  text-decoration:none;color:inherit;border:1px solid var(--hair);border-radius:8px;padding:12px 14px;
 }
-a.trip:hover{border-color:var(--l1)}
-a.trip .nm{font-size:1.05rem;font-weight:700}
-a.trip .dt{font-size:.85rem;color:var(--muted);margin-top:2px}
-a.trip .go{font-size:.83rem;color:var(--l1);font-weight:600;margin-top:8px}
+.way:hover{border-color:var(--l1)}
+.way b{display:block;font-size:.93rem;font-weight:700}
+.way s{display:block;text-decoration:none;font-size:.78rem;color:var(--muted);margin-top:1px;font-weight:400}
+.way i{font-style:normal;color:var(--l1);font-weight:800}
+.way.main{background:var(--ink);border-color:var(--ink);color:#fff}
+.way.main:hover{border-color:#F0C78A}
+.way.main s{color:#9FB1C9}
+.way.main i{color:#F0C78A}
 footer{padding:18px 20px 40px;font-size:.8rem;color:var(--muted)}
 </style>
 </head>
@@ -35,14 +45,26 @@ footer{padding:18px 20px 40px;font-size:.8rem;color:var(--muted)}
 <div class="wrap">
   <header>
     <h1>行程表</h1>
-    <p>點進去看當天要去哪、吃什麼、怎麼搭車</p>
+    <p>兩種看法：圖文版用看的，完整行程用查的</p>
   </header>
   <main>
-    <a class="trip" href="busan-2026-10/">
-      <div class="nm">釜山 4 天 3 夜</div>
-      <div class="dt">2026 年 10 月 1 日（四）– 10 月 4 日（日）· 6 人</div>
-      <div class="go">打開行程 →</div>
-    </a>
+    <div class="trip">
+      <img class="banner" src="busan-2026-10/img/hero-busan-night.jpg" alt="釜山夜景">
+      <div class="body">
+        <div class="nm">釜山 4 天 3 夜</div>
+        <div class="dt">2026 年 10 月 1 日（四）– 10 月 4 日（日）· 6 人</div>
+        <div class="ways">
+          <a class="way main" href="busan-2026-10/photo.html">
+            <span><b>看圖文版</b><s>大圖、短句，先感受這趟要去哪</s></span>
+            <i>→</i>
+          </a>
+          <a class="way" href="busan-2026-10/">
+            <span><b>查完整行程</b><s>時間、轉乘、店家、韓文對照、可以改的地方</s></span>
+            <i>→</i>
+          </a>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     這個頁面沒有加密。網址給誰，誰就看得到。
