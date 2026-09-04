@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>圖文版 風格提案 · 三選一</title>
+<style>
+/* ===================== 共用外殼 ===================== */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#E9EBEF;color:#14181F;
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC","Segoe UI","Microsoft JhengHei",sans-serif;
+  font-size:16px;line-height:1.6;font-variant-numeric:tabular-nums;
+}
+.shell{max-width:680px;margin:0 auto;background:#fff;min-height:100vh}
+:focus-visible{outline:2.5px solid #0B4F9E;outline-offset:2px;border-radius:3px}
+img{display:block;max-width:100%}
+
+.intro{background:#14181F;color:#fff;padding:30px 22px 26px}
+.intro h1{margin:0;font-size:1.35rem;font-weight:700;letter-spacing:.01em}
+.intro p{margin:10px 0 0;font-size:.88rem;color:#A9B6CA}
+.intro .rules{margin:18px 0 0;padding:14px 15px;background:#1E2632;border-radius:8px;font-size:.83rem;color:#C3CEDD}
+.intro .rules b{color:#fff;display:block;margin-bottom:5px;font-size:.8rem;letter-spacing:.04em}
+.intro .rules li{margin:5px 0}
+.intro .rules ul{margin:0;padding-left:18px}
+
+.brief{padding:24px 22px 6px;border-bottom:1px solid #E4E8EE}
+.brief h2{margin:0 0 4px;font-size:1.1rem;font-weight:700}
+.brief .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;color:#6B7688;
+  border:1px solid #CED5DF;border-radius:4px;padding:2px 8px;margin-bottom:9px}
+.brief p{margin:0 0 10px;font-size:.88rem;color:#3B4657}
+.brief .pro,.brief .con{font-size:.85rem;margin:0 0 8px;padding-left:22px;position:relative}
+.brief .pro::before{content:"＋";position:absolute;left:4px;color:#3C8A4E;font-weight:700}
+.brief .con::before{content:"−";position:absolute;left:5px;color:#B3271E;font-weight:700}
+
+.frame{padding:18px 14px 34px;background:#E9EBEF}
+.demo{border-radius:12px;overflow:hidden;box-shadow:0 2px 14px rgba(20,24,31,.13)}
+
+.closing{padding:28px 22px 46px;border-top:1px solid #E4E8EE}
+.closing h2{margin:0 0 10px;font-size:1.05rem}
+.closing p{margin:0 0 10px;font-size:.88rem;color:#3B4657}
+.closing ul{margin:0 0 10px;padding-left:20px;font-size:.88rem;color:#3B4657}
+.closing li{margin:6px 0}
+
+/* ===================== 版 A：型錄 ===================== */
+.v1{
+  --paper:#FAF8F4;--ink:#201C18;--soft:#6E6659;--hair:#E0D8CA;--accent:#1C4C6B;
+  background:var(--paper);color:var(--ink);
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif;
+}
+.v1 .serif{font-family:"Songti TC","Noto Serif TC","Source Han Serif TC",Georgia,"Times New Roman",serif}
+.v1 .dayhead{padding:34px 26px 26px;border-bottom:1px solid var(--hair)}
+.v1 .dayhead .kicker{font-size:.7rem;letter-spacing:.22em;color:var(--accent);font-weight:700;margin-bottom:12px}
+.v1 .dayhead h3{margin:0;font-size:1.9rem;font-weight:400;line-height:1.25;letter-spacing:.01em}
+.v1 .dayhead .sub{margin:10px 0 0;font-size:.84rem;color:var(--soft);letter-spacing:.02em}
+.v1 .st{padding:30px 26px 4px}
+.v1 .st .no{font-size:.68rem;letter-spacing:.2em;color:var(--soft);font-weight:700}
+.v1 .st .tm{font-size:.78rem;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-top:3px}
+.v1 .st h4{margin:9px 0 0;font-size:1.32rem;font-weight:400;line-height:1.3}
+.v1 .st p{margin:11px 0 0;font-size:.9rem;color:#453E35;line-height:1.75}
+.v1 figure{margin:20px 0 0}
+.v1 figure img{width:100%;height:210px;object-fit:cover}
+.v1 figcap{display:block;margin:8px 26px 0;font-size:.7rem;color:var(--soft);letter-spacing:.02em}
+.v1 .rule{height:1px;background:var(--hair);margin:30px 26px 0}
+.v1 .ph{height:210px;margin-top:20px;background:linear-gradient(160deg,#EDE6D8 0%,#DCD2BE 100%);
+  display:flex;align-items:center;justify-content:center;position:relative}
+.v1 .ph .nm{position:absolute;bottom:20px;left:26px;font-size:1.5rem;color:#FFFDF8;letter-spacing:.05em;
+  text-shadow:0 1px 10px rgba(60,50,30,.4)}
+.v1 .meal{margin:30px 0 0;padding:0 26px}
+.v1 .meal .lbl{font-size:.68rem;letter-spacing:.2em;color:var(--soft);font-weight:700;margin-bottom:12px}
+.v1 .meal .row{display:grid;grid-template-columns:104px 1fr;gap:15px;align-items:start}
+.v1 .meal img{width:104px;height:104px;object-fit:cover}
+.v1 .meal h5{margin:0;font-size:1.02rem;font-weight:400}
+.v1 .meal .kr{font-size:.76rem;color:var(--soft);margin-top:2px}
+.v1 .meal p{margin:7px 0 0;font-size:.85rem;color:#453E35;line-height:1.7}
+.v1 .foot{margin-top:32px;padding:20px 26px 30px;border-top:1px solid var(--hair);font-size:.74rem;color:var(--soft)}
+
+/* ===================== 版 B：票券 ===================== */
+.v2{
+  --deep:#10233A;--card:#F4EEE2;--ink:#17212E;--soft:#6A7383;--l1:#F06A00;--dh:#0B4F9E;--l2:#5FA83C;
+  background:var(--deep);color:var(--ink);
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif;
+}
+.v2 .dayhead{padding:26px 20px 22px;color:#fff}
+.v2 .dayhead .code{font-size:.66rem;letter-spacing:.2em;color:#7D93B0;font-weight:700}
+.v2 .dayhead h3{margin:9px 0 0;font-size:1.5rem;font-weight:700;letter-spacing:.01em}
+.v2 .dayhead .sub{margin:7px 0 0;font-size:.8rem;color:#9DB0C8}
+.v2 .stub{
+  margin:0 14px 12px;background:var(--card);border-radius:9px;display:grid;grid-template-columns:8px 1fr;
+  overflow:hidden;position:relative;
+}
+.v2 .stub .band{background:var(--l1)}
+.v2 .stub.dh .band{background:var(--dh)}
+.v2 .stub.l2 .band{background:var(--l2)}
+.v2 .stub .body{padding:15px 16px 16px}
+.v2 .stub .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.v2 .stub .tm{font-size:1.12rem;font-weight:700;letter-spacing:.02em}
+.v2 .stub .seq{font-size:.64rem;letter-spacing:.16em;color:var(--soft);font-weight:700}
+.v2 .stub h4{margin:5px 0 0;font-size:1.05rem;font-weight:700}
+.v2 .stub p{margin:7px 0 0;font-size:.85rem;color:#3D4653;line-height:1.68}
+.v2 .stub .tear{
+  border-top:2px dashed #CFC5B2;margin:14px -16px 0;padding:11px 16px 0;position:relative;
+  font-size:.74rem;color:var(--soft);letter-spacing:.04em;
+}
+.v2 .stub .tear::before,.v2 .stub .tear::after{
+  content:"";position:absolute;top:-11px;width:18px;height:18px;border-radius:50%;background:var(--deep);
+}
+.v2 .stub .tear::before{left:-9px}
+.v2 .stub .tear::after{right:-9px}
+.v2 .stub img{width:calc(100% + 32px);height:150px;object-fit:cover;margin:13px -16px 0}
+.v2 .stub .credit{margin:9px 0 0;font-size:.7rem;color:var(--soft);letter-spacing:.02em}
+.v2 .ph{height:118px;margin:13px -16px -16px;background:#E7DECC;display:flex;align-items:center;justify-content:center}
+.v2 .meal{margin:0 14px 12px;background:var(--card);border-radius:9px;overflow:hidden}
+.v2 .meal img{width:100%;height:160px;object-fit:cover}
+.v2 .meal .body{padding:14px 16px 16px}
+.v2 .meal .lbl{font-size:.63rem;letter-spacing:.18em;color:#fff;background:var(--l1);
+  display:inline-block;padding:2px 8px;border-radius:3px;font-weight:700}
+.v2 .meal h5{margin:9px 0 0;font-size:1.02rem;font-weight:700}
+.v2 .meal .kr{font-size:.76rem;color:var(--soft);margin-top:2px}
+.v2 .meal p{margin:7px 0 0;font-size:.85rem;color:#3D4653;line-height:1.68}
+.v2 .foot{padding:6px 20px 26px;font-size:.72rem;color:#8095AF}
+
+/* ===================== 版 C：明信片 ===================== */
+.v3{
+  --paper:#F7F2E9;--ink:#2B2620;--soft:#7C7263;--accent:#C4553F;--tape:#E8D9A8;
+  background:var(--paper);color:var(--ink);
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif;
+}
+.v3 .dayhead{padding:30px 22px 8px;text-align:center}
+.v3 .dayhead .stamp{
+  display:inline-block;border:2px solid var(--accent);color:var(--accent);border-radius:6px;
+  padding:5px 12px;font-size:.7rem;font-weight:700;letter-spacing:.14em;transform:rotate(-2.5deg);
+}
+.v3 .dayhead h3{margin:14px 0 0;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.v3 .dayhead .sub{margin:6px 0 0;font-size:.82rem;color:var(--soft)}
+.v3 .cards{padding:22px 18px 6px}
+.v3 .pc{
+  background:#fff;border-radius:3px;padding:11px 11px 15px;margin:0 0 26px;
+  box-shadow:0 3px 12px rgba(70,58,40,.16);position:relative;
+}
+.v3 .pc:nth-child(odd){transform:rotate(-1.2deg)}
+.v3 .pc:nth-child(even){transform:rotate(1deg)}
+.v3 .pc::before{
+  content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:76px;height:22px;background:var(--tape);opacity:.85;border-radius:1px;
+  box-shadow:0 1px 3px rgba(70,58,40,.16);
+}
+.v3 .pc img{width:100%;height:186px;object-fit:cover;border-radius:1px}
+.v3 .pc .ph{height:150px;border-radius:1px;background:#EFE3CC;display:flex;align-items:center;justify-content:center}
+.v3 .pc .cap{padding:12px 5px 0}
+.v3 .pc .tm{display:inline-block;background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;
+  letter-spacing:.06em;padding:2px 8px;border-radius:11px}
+.v3 .pc h4{margin:9px 0 0;font-size:1.1rem;font-weight:700}
+.v3 .pc p{margin:7px 0 0;font-size:.86rem;color:#4A4238;line-height:1.7}
+.v3 .pc .kr{font-size:.76rem;color:var(--soft);margin-top:3px}
+.v3 .foot{padding:6px 22px 30px;font-size:.73rem;color:var(--soft);text-align:center}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<section class="intro">
+  <h1>圖文版 · 三版風格提案</h1>
+  <p>同一段行程（10/2 那天的片段）用三種風格各做一次，方便直接比較。選一版，或告訴我要 A 的版面配 C 的照片處理這種混搭。</p>
+  <div class="rules">
+    <b>三版共同的前提</b>
+    <ul>
+      <li>照片是 Wikimedia Commons 的 CC 授權圖，已下載進 repo，頁尾會標作者與授權。</li>
+      <li>找不到合法好圖的地點（滑車、Centum City、李載茂披薩、田浦咖啡街）走 SVG 繪製，三版各有不同做法。</li>
+      <li>不載外部字體，只用系統字體。中文手寫字體手機上幾乎都沒有，所以版 C 的手感靠版面而不是字型。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 版 A ============ -->
+<section class="brief">
+  <span class="tag">版 A</span>
+  <h2>型錄：像旅行社的精裝手冊</h2>
+  <p>大留白、襯線標題、照片橫幅出血，一站一段像雜誌專題。編號 01 / 02 / 03 帶著往下讀。</p>
+  <p class="pro">最有「質感」與正式感，長輩看了會覺得是認真做的東西。照片少也撐得住，因為留白本身就是設計。</p>
+  <p class="con">資訊密度最低，同樣內容頁面會拉得最長，滑很久。現場要查東西時最不好用。</p>
+</section>
+<div class="frame"><div class="demo v1">
+  <div class="dayhead">
+    <div class="kicker">DAY 2 — 10 / 02 FRI</div>
+    <h3 class="serif">機張的海<br>與民樂的火</h3>
+    <p class="sub">滑車 · 海東龍宮寺 · Centum City · 韓牛燒烤</p>
+  </div>
+
+  <div class="st">
+    <div class="no">01</div>
+    <div class="tm">11:15</div>
+    <h4 class="serif">機張 斜坡滑車</h4>
+    <p>平日的東釜山比連假輕鬆得多。買三到四趟，第一趟熟悉煞車與轉向，速度限制較嚴，第二趟之後才是真的在玩。務必穿包鞋，長髮綁起來。</p>
+    <div class="ph">
+      <svg viewBox="0 0 340 150" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M-10 118 C60 118 70 74 128 74 S196 112 250 92 300 44 350 44" fill="none" stroke="#BCA98A" stroke-width="9" stroke-linecap="round"/>
+        <path d="M-10 118 C60 118 70 74 128 74 S196 112 250 92 300 44 350 44" fill="none" stroke="#FFFDF8" stroke-width="2" stroke-dasharray="7 9" opacity=".8"/>
+        <g transform="translate(122,60)">
+          <rect x="0" y="0" width="26" height="11" rx="5" fill="#1C4C6B"/>
+          <circle cx="6" cy="12.5" r="3.4" fill="#403829"/><circle cx="20" cy="12.5" r="3.4" fill="#403829"/>
+          <circle cx="13" cy="-5" r="5" fill="#C96B2B"/>
+        </g>
+      </svg>
+      <span class="nm serif">Skyline Luge</span>
+    </div>
+    <figcap>沒有可用的授權照片，改以插畫呈現</figcap>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="st">
+    <div class="no">02</div>
+    <div class="tm">13:20</div>
+    <h4 class="serif">海東龍宮寺</h4>
+    <p>從滑車出口步行就到。蓋在海崖上的寺廟，浪打在下面的岩石上，是這一天最好看的一站。人多，往裡面走反而清靜。</p>
+    <figure>
+      <img src="img/yonggungsa.jpg" alt="海東龍宮寺，蓋在海崖上的寺廟建築與海浪" loading="lazy">
+      <figcap>Anna L Martin / Wikimedia Commons · CC BY 2.0</figcap>
+    </figure>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="st">
+    <div class="no">03</div>
+    <div class="tm">16:20</div>
+    <h4 class="serif">Centum City</h4>
+    <p>原本的汗蒸幕時段。新世界與樂天兩間百貨用地下通道連在一起，都開到 20:30。B1 食品館是這裡最強的一塊，伴手禮在這收最快。</p>
+    <div class="ph" style="background:linear-gradient(160deg,#E6E9EC 0%,#CDD4DA 100%)">
+      <svg viewBox="0 0 340 150" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g fill="none" stroke="#8D9AA6" stroke-width="2">
+          <rect x="44" y="52" width="54" height="86"/><rect x="108" y="30" width="66" height="108"/>
+          <rect x="184" y="62" width="46" height="76"/><rect x="240" y="42" width="58" height="96"/>
+        </g>
+        <g fill="#8D9AA6" opacity=".5">
+          <rect x="54" y="64" width="9" height="9"/><rect x="70" y="64" width="9" height="9"/><rect x="86" y="64" width="9" height="9"/>
+          <rect x="120" y="46" width="9" height="9"/><rect x="136" y="46" width="9" height="9"/><rect x="152" y="46" width="9" height="9"/>
+          <rect x="120" y="66" width="9" height="9"/><rect x="136" y="66" width="9" height="9"/><rect x="152" y="66" width="9" height="9"/>
+          <rect x="252" y="58" width="9" height="9"/><rect x="268" y="58" width="9" height="9"/><rect x="284" y="58" width="9" height="9"/>
+        </g>
+        <path d="M0 138 H340" stroke="#8D9AA6" stroke-width="2"/>
+      </svg>
+      <span class="nm serif" style="color:#3E4A55;text-shadow:none">Centum City</span>
+    </div>
+    <figcap>沒有可用的授權照片，改以插畫呈現</figcap>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="meal">
+    <div class="lbl">DINNER — 19:25</div>
+    <div class="row">
+      <img src="img/hanwoo-galbi.jpg" alt="炭火烤網上的韓牛" loading="lazy">
+      <div>
+        <h5 class="serif">民樂洞 韓牛燒烤</h5>
+        <div class="kr">한우일번지 × 규이치 식육식당</div>
+        <p>精肉食堂形式，自己到肉櫃挑等級和部位。看得到廣安里海面，有包廂。全程最貴也最值得坐下來的一餐——海景位一定要事先訂。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">照片：Anna L Martin (CC BY 2.0)、ayustety (CC BY-SA 2.0) / Wikimedia Commons</div>
+</div></div>
+
+<!-- ============ 版 B ============ -->
+<section class="brief">
+  <span class="tag">版 B</span>
+  <h2>票券：每一站是一張票根</h2>
+  <p>深藍底配米色票根，左邊的色帶就是那段要搭的地鐵線，下緣有撕線和打孔。延續現在文字版已經在用的地鐵配色。</p>
+  <p class="pro">資訊密度和美感的平衡點最好，一站一張卡，掃一眼就知道有幾件事。跟文字版是同一套視覺語言，兩版切換不會有割裂感。</p>
+  <p class="con">最不像「旅行社型錄」，比較像交通票券 app。照片只能當配角，放不了大圖。</p>
+</section>
+<div class="frame"><div class="demo v2">
+  <div class="dayhead">
+    <div class="code">DAY 2 · 10/02 FRI · 6 PAX</div>
+    <h3>機張 · Centum City · 韓牛</h3>
+    <p class="sub">1 號線 → 東海線 → 2 號線 → 3 號線</p>
+  </div>
+
+  <div class="stub dh">
+    <div class="band"></div>
+    <div class="body">
+      <div class="top"><span class="tm">11:15</span><span class="seq">STOP 01</span></div>
+      <h4>機張 斜坡滑車</h4>
+      <p>買 3–4 趟。第一趟熟悉操作，第二趟之後才好玩。必須穿包鞋，涼鞋拖鞋不能上車。</p>
+      <div class="ph">
+        <svg viewBox="0 0 300 100" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-8 80 C50 80 58 46 108 46 S168 74 214 58 268 26 308 26" fill="none" stroke="#C9BDA6" stroke-width="8" stroke-linecap="round"/>
+          <g transform="translate(103,36)"><rect x="0" y="0" width="22" height="9" rx="4" fill="#0B4F9E"/>
+            <circle cx="5" cy="10.5" r="2.9" fill="#4A4231"/><circle cx="17" cy="10.5" r="2.9" fill="#4A4231"/>
+            <circle cx="11" cy="-4" r="4.2" fill="#F06A00"/></g>
+        </svg>
+      </div>
+      <div class="tear">OSIRIA 站 · 東海線 · 65 分鐘</div>
+    </div>
+  </div>
+
+  <div class="stub dh">
+    <div class="band"></div>
+    <div class="body">
+      <div class="top"><span class="tm">13:20</span><span class="seq">STOP 02</span></div>
+      <h4>海東龍宮寺</h4>
+      <p>從滑車出口步行就到，蓋在海崖上的寺廟，是這天拍照最好看的一站。</p>
+      <img src="img/yonggungsa.jpg" alt="海東龍宮寺" loading="lazy">
+      <p class="credit">Anna L Martin / Wikimedia Commons · CC BY 2.0</p>
+      <div class="tear">東海線 OSIRIA 站 · 步行 10 分</div>
+    </div>
+  </div>
+
+  <div class="stub l2">
+    <div class="band"></div>
+    <div class="body">
+      <div class="top"><span class="tm">16:20</span><span class="seq">STOP 03</span></div>
+      <h4>Centum City 逛街</h4>
+      <p>原本的汗蒸幕時段。新世界＋樂天兩間百貨地下連通，都開到 20:30，19:00 走完全在營業時間內。</p>
+      <div class="ph">
+        <svg viewBox="0 0 300 100" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="none" stroke="#A79A82" stroke-width="2">
+            <rect x="52" y="34" width="44" height="58"/><rect x="104" y="18" width="54" height="74"/>
+            <rect x="166" y="42" width="38" height="50"/><rect x="212" y="26" width="46" height="66"/>
+          </g>
+          <g fill="#A79A82" opacity=".45">
+            <rect x="60" y="44" width="7" height="7"/><rect x="73" y="44" width="7" height="7"/><rect x="86" y="44" width="7" height="7"/>
+            <rect x="114" y="30" width="7" height="7"/><rect x="127" y="30" width="7" height="7"/><rect x="140" y="30" width="7" height="7"/>
+            <rect x="222" y="38" width="7" height="7"/><rect x="235" y="38" width="7" height="7"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tear">2 號線 Centum City 站 · 站內直通</div>
+    </div>
+  </div>
+
+  <div class="meal">
+    <img src="img/hanwoo-galbi.jpg" alt="炭火烤網上的韓牛" loading="lazy">
+    <div class="body">
+      <span class="lbl">DINNER 19:25</span>
+      <h5>民樂洞 韓牛燒烤</h5>
+      <div class="kr">한우일번지 × 규이치 식육식당 · 民樂水邊路 OK타운 3F</div>
+      <p>精肉食堂形式，自己挑等級和部位，看得到廣安里海面。六人抓 ₩350,000–500,000，海景位一定要事先訂。</p>
+    </div>
+  </div>
+
+  <div class="foot">照片：Anna L Martin (CC BY 2.0)、ayustety (CC BY-SA 2.0) / Wikimedia Commons</div>
+</div></div>
+
+<!-- ============ 版 C ============ -->
+<section class="brief">
+  <span class="tag">版 C</span>
+  <h2>明信片：像貼在筆記本上的拼貼</h2>
+  <p>照片做成白框明信片，每張輕微歪一點、上面有膠帶，時間做成圓標籤。暖色紙底。</p>
+  <p class="pro">最容易讓人有「要出去玩了」的心情，丟進群組最容易被點開。輕鬆、不像公文。</p>
+  <p class="con">最不正式，資訊多的時候會顯得雜。中文沒有手寫系統字體，手感只能靠旋轉和貼紙做，做過頭會廉價。旋轉的版面在小螢幕上左右會吃掉一點空間。</p>
+  <p style="font-size:.83rem;color:#6B7688;margin-top:2px">注意比較基準：這版多放了一張廣安大橋（共四張圖、只有一張插畫），A 和 B 是兩張照片配兩張插畫。想看照片多的時候長什麼樣就看這版，但別因為它圖多就覺得它比較好看。</p>
+</section>
+<div class="frame"><div class="demo v3">
+  <div class="dayhead">
+    <span class="stamp">DAY 2 · 10/02 FRI</span>
+    <h3>機張的海，民樂的火</h3>
+    <p class="sub">滑車 · 龍宮寺 · Centum City · 韓牛</p>
+  </div>
+  <div class="cards">
+
+    <div class="pc">
+      <div class="ph">
+        <svg viewBox="0 0 320 150" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-8 116 C56 116 64 72 120 72 S186 108 236 88 292 44 330 44" fill="none" stroke="#D8C49B" stroke-width="10" stroke-linecap="round"/>
+          <path d="M-8 116 C56 116 64 72 120 72 S186 108 236 88 292 44 330 44" fill="none" stroke="#FFF9EC" stroke-width="2" stroke-dasharray="6 8"/>
+          <g transform="translate(114,58)"><rect x="0" y="0" width="25" height="10" rx="5" fill="#C4553F"/>
+            <circle cx="6" cy="11.5" r="3.2" fill="#5B4A34"/><circle cx="19" cy="11.5" r="3.2" fill="#5B4A34"/>
+            <circle cx="12" cy="-5" r="4.8" fill="#E8A33D"/></g>
+        </svg>
+      </div>
+      <div class="cap">
+        <span class="tm">11:15</span>
+        <h4>機張 斜坡滑車</h4>
+        <p>買 3–4 趟，第二趟之後才好玩。記得穿包鞋，長髮綁起來。</p>
+      </div>
+    </div>
+
+    <div class="pc">
+      <img src="img/yonggungsa.jpg" alt="海東龍宮寺" loading="lazy">
+      <div class="cap">
+        <span class="tm">13:20</span>
+        <h4>海東龍宮寺</h4>
+        <p>從滑車出口走過去就到。蓋在海崖上的寺廟，這天拍照最好看的一站。</p>
+        <div class="kr">Anna L Martin · CC BY 2.0</div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <img src="img/hanwoo-galbi.jpg" alt="炭火烤網上的韓牛" loading="lazy">
+      <div class="cap">
+        <span class="tm">19:25</span>
+        <h4>民樂洞 韓牛燒烤</h4>
+        <p>自己到肉櫃挑等級和部位，看得到廣安里海面。全程最貴也最值得坐下來的一餐。</p>
+        <div class="kr">한우일번지 × 규이치 · ayustety CC BY-SA 2.0</div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <img src="img/gwangan-bridge.jpg" alt="廣安大橋夜景" loading="lazy">
+      <div class="cap">
+        <span class="tm">21:00</span>
+        <h4>廣安里海邊</h4>
+        <p>吃完走幾分鐘就到海灘，橋的燈光會變色。散步半小時剛好，然後搭 2 號線回連山。</p>
+        <div class="kr">Jeena Paradies · Public domain</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot">照片來源與授權會統一列在頁尾</div>
+</div></div>
+
+<section class="closing">
+  <h2>選好之後</h2>
+  <p>回一句「A」「B」或「C」就可以，我會把整趟四天做完整版。想混搭也行，常見的組合：</p>
+  <ul>
+    <li><b>B 的骨架配 A 的照片處理</b>——票根卡保留，但照片改成整段出血大圖。</li>
+    <li><b>A 的版面配 C 的暖色</b>——留白和襯線標題留著，換掉冷色調。</li>
+    <li><b>三版都不對</b>——說得出哪裡不對就好（太素、太花、太像 app、字太小），我重出。</li>
+  </ul>
+  <p>另外兩件已經定案、做完整版時會一起做的事：index 那張行程卡會加成兩個入口（主按鈕看圖文版、次按鈕查細節），圖文版每天結尾和文字版頁首互相放切換連結。</p>
+  <p style="color:#6B7688;font-size:.83rem">這頁只是給你選的，不會從 index 連出去，也帶了 noindex。選定後我會把它刪掉。</p>
+</section>
+
+</div>
+</body>
+</html>

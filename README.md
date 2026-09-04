@@ -22,3 +22,11 @@
 - **票務**優先連 KKday／Klook 的搜尋頁而非單一商品頁，商品下架不會讓連結壞掉。唯一的例外是 Klook 的 SPA LAND 商品頁。
 - KKday、Klook、樂天百貨／免稅店的站台會擋 bot（curl 403、headless 吃 Cloudflare 挑戰），**改連結後沒辦法用指令驗證**，只能靠搜尋引擎索引過的 URL，或自己用瀏覽器點一次。
 - App 連結用 App Store 數字 ID（已確認台灣區都有上架）配 Google Play 搜尋連結。
+
+## 圖片
+
+`busan-2026-10/img/` 放 Wikimedia Commons 的 CC 授權照片，`credits.json` 記錄每張的來源、作者、授權與原始頁面，**頁面上必須標作者與授權**（目前用的都是 CC BY / CC BY-SA / Public domain，沒有 NC 或 ND）。
+
+- 下載後一律用 `sips -Z 1100` 壓到 1100px 寬再進 repo。
+- **每張都要親眼看過再用**：檔名對不代表內容對。實際踩過的例子——`Haedong Yonggungsa Temple 20200522 001.jpg` 是入口步道沒有海，`Hanu 5.jpg` 是一頭活牛不是烤肉。
+- 找不到合法好圖的地點（滑車、李載茂披薩、Centum City、田浦咖啡街）走 inline SVG，不要為了湊圖去用來路不明的照片。
