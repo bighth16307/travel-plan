@@ -133,6 +133,11 @@ nav button[aria-selected=true] b{color:var(--line)}
 .opt .nm span{font-weight:400;color:var(--muted);font-size:.84rem;margin-left:5px}
 .opt .why{margin:2px 0 0;font-size:.86rem;color:var(--ink-2)}
 .opt.star .nm::before{content:"★ ";color:var(--line)}
+.opt .cost{margin-top:6px;font-size:.83rem;font-weight:700;color:#2F7D46}
+.opt .cost em{font-style:normal;font-weight:400;color:var(--muted)}
+.daysum{margin:14px 0 0;background:#F1F7F2;border:1px solid #CFE3D5;border-radius:8px;padding:11px 13px;font-size:.87rem}
+.daysum b{color:#2F7D46}
+.daysum .note{display:block;margin-top:4px;font-size:.8rem;color:var(--muted)}
 .snacks{margin-top:12px;background:var(--panel);border-radius:7px;padding:11px 13px;font-size:.86rem;color:var(--ink-2)}
 .snacks b{color:var(--ink)}
 
@@ -294,22 +299,32 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">豬肉湯飯 <span>돼지국밥</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%82%A8%ED%8F%AC%EB%8F%99%20%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">南浦這幾家</a></div>
       <p class="why">釜山的代表食物，一人一鍋、上桌快、20 分鐘吃完。不敢吃內臟味的可以點「수육백반」（水煮肉切片＋飯）。</p>
+      <div class="cost">一人 ₩9,000–13,000 <em>（西面實例 ₩9,000、수육백반 約 ₩15,000）</em></div>
     </div>
     <div class="opt">
       <div class="nm">雪濃湯／牛骨湯 <span>설렁탕</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%82%A8%ED%8F%AC%EB%8F%99%20%EC%84%A4%EB%A0%81%ED%83%95" target="_blank" rel="noopener">南浦這幾家</a></div>
       <p class="why">全程最清淡的一餐，兩位長輩剛下飛機吃這個最舒服。不辣、不油。</p>
+      <div class="cost">一人 ₩10,000–15,000 <em>（推估，同類湯飯行情）</em></div>
     </div>
     <div class="opt">
       <div class="nm">小麥冷麵 <span>밀면</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%82%A8%ED%8F%AC%EB%8F%99%20%EB%B0%80%EB%A9%B4" target="_blank" rel="noopener">南浦這幾家</a></div>
       <p class="why">釜山獨有的麵，比平壤冷麵便宜也親切。天氣還熱的話很解膩，湯冷麵記得說不要辣。</p>
+      <div class="cost">一人 ₩6,500–8,000 <em>（비빔밀면 約 ₩7,000）</em></div>
     </div>
     <div class="opt">
       <div class="nm">富平豬腳一條街 <span>부평 족발골목</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%B6%80%ED%8F%89%20%EC%A1%B1%EB%B0%9C%EA%B3%A8%EB%AA%A9" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">六人分食一大盤最划算，但要坐 1 小時以上，會吃掉逛街時間。想吃就把它當今晚主餐，捨棄國際市場。</p>
+      <div class="cost">六人 ₩90,000–120,000，一人約 ₩15,000–20,000 <em>（冷菜豬腳小份 ₩23,000，六人要點大份兩盤）</em></div>
     </div>
     <div class="snacks">
-      <b>邊走邊吃的：</b>堅果黑糖餅 씨앗호떡（BIFF 廣場招牌）· 拌冬粉 비빔당면 · 釜山魚板 어묵 · 糖餅旁的辣炒年糕 떡볶이
+      <b>邊走邊吃的：</b>堅果黑糖餅 씨앗호떡（BIFF 廣場招牌）· 拌冬粉 비빔당면 · 釜山魚板 어묵 · 糖餅旁的辣炒年糕 떡볶이<br>
+      <b>一人抓 ₩8,000–12,000</b>：黑糖餅 ₩1,500–2,000、魚板 ₩1,000–2,000 一串、拌冬粉 ₩3,000–4,000、辣炒年糕 ₩4,000–5,000。攤販幾乎只收現金，這段的錢要留成鈔票。
     </div>
+  </div>
+
+  <div class="daysum">
+    <b>D1 餐費：一人約 ₩22,000</b>（晚餐 ₩12,000 ＋邊走邊吃 ₩10,000）
+    <span class="note">六人約 ₩132,000。改吃富平豬腳的話一人多 ₩5,000 上下，但那餐會吃掉逛街時間。</span>
   </div>
 
   <div class="meals">
@@ -409,18 +424,22 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">東釜山 Outlet 美食街 <span>롯데프리미엄아울렛 동부산</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%A1%AF%EB%8D%B0%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%95%84%EC%9A%B8%EB%A0%9B%20%EB%8F%99%EB%B6%80%EC%82%B0%EC%A0%90" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">最保險的選擇：座位多、有冷氣、六個人不用等、口味各自選，順便逛一圈。玩完滑車全身汗的時候會很感謝這個決定。裡面也有一台 WOWPASS 機。</p>
+      <div class="cost">一人 ₩10,000–15,000 <em>（推估，Outlet 美食街行情）</em></div>
     </div>
     <div class="opt">
       <div class="nm">機張海鮮／蟹料理 <span>기장 대게</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B8%B0%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">機張市場</a></div>
       <p class="why">機張本來就是蟹產地，價格比市區的觀光店合理。想吃海鮮的話這裡吃比咋嘎其划算，但坐得久，看上面那格的代價。</p>
+      <div class="cost"><b>秤重時價</b>，六人抓 ₩250,000 起跳，另加小菜桌費一人 ₩7,000 <em>（螃蟹自己挑、秤完才算錢）</em></div>
     </div>
     <div class="opt">
       <div class="nm">竹城教堂 海景咖啡 <span>죽성성당</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%A3%BD%EC%84%B1%EC%84%B1%EB%8B%B9" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">拍照第一名，但只有輕食。當成午餐會吃不飽，適合「先吃一頓再過來喝咖啡」。</p>
+      <div class="cost">一人 ₩7,000–12,000 <em>（推估，咖啡＋輕食）</em></div>
     </div>
     <div class="opt">
       <div class="nm">松亭 烤貝 <span>송정 조개구이</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%86%A1%EC%A0%95%20%EC%A1%B0%EA%B0%9C%EA%B5%AC%EC%9D%B4" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">東海線松亭站附近。海邊烤貝很有氣氛，但要坐久，下午的 Centum City 會被壓掉一截。</p>
+      <div class="cost">六人 ₩120,000–180,000 <em>（推估，海邊烤貝一盤兩三人份）</em></div>
     </div>
   </div>
 
@@ -429,20 +448,28 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">한우일번지 × 규이치 식육식당 <span>民樂水邊路 OK타운 3 樓</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%95%9C%EC%9A%B0%EC%9D%BC%EB%B2%88%EC%A7%80%20%EB%AF%BC%EB%9D%BD%EB%8F%99" target="_blank" rel="noopener">地圖</a></div>
       <p class="why"><b>首選。</b>精肉食堂形式，自己到肉櫃挑等級和部位，看得到廣安里海面，有包廂，開到 22:00。六個人加兩位長輩，包廂比大廳舒服得多——但海景位一定要事先訂。</p>
+      <div class="cost">一人 ₩55,000–80,000 <em>（挑 1++ 會往上限走，另加小菜桌費一人 ₩3,000–5,000）</em></div>
     </div>
     <div class="opt">
       <div class="nm">원조철마한우로스구이 <span>民樂本洞路19巷 66</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9B%90%EC%A1%B0%EC%B2%A0%EB%A7%88%ED%95%9C%EC%9A%B0%EB%A1%9C%EC%8A%A4%EA%B5%AC%EC%9D%B4" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">沒有海景，換來的是更親民的價位和更穩的肉，店員會講英文，開到凌晨。走到海邊五分鐘。想把預算花在肉上就選這家。</p>
+      <div class="cost">一人 ₩45,000–65,000 <em>（比首選那家省下的大約是一人一杯燒酒到一份肉的差距）</em></div>
     </div>
     <div class="opt">
       <div class="nm">안녕한우 센텀점 <span>海雲大路 222</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%95%88%EB%85%95%ED%95%9C%EC%9A%B0%20%EC%84%BC%ED%85%80%EC%A0%90" target="_blank" rel="noopener">地圖</a></div>
       <p class="why">下午就在 Centum City，這家走過去就到，省下一段車程。但它 21:30 就關，而且吃完還要繞回廣安里看橋——省下的移動時間會在飯後還回去。想輕鬆一點才選這家。</p>
+      <div class="cost">一人 ₩50,000–75,000 <em>（推估，Centum 商圈價位）</em></div>
     </div>
     <div class="snacks">
       <b>預算：</b>1++ 韓牛約 ₩70,000–120,000／公斤，吃得盡興一人 ₩50,000–80,000，六人抓 <b>₩350,000–500,000</b>（約台幣 8,000–11,500）。精肉食堂通常另收小菜桌費 상차림비，一人 ₩3,000–5,000。<br>
       <b>訂位：</b>CatchTable 或 Naver 訂位，或請飯店幫打電話。10/2 是週五晚上，當天走過去很可能沒位子。<a class="lk" href="https://app.catchtable.co.kr/" target="_blank" rel="noopener">CatchTable</a><br>
       <b>換錢：</b>民樂海邊的 CU민락해변점 有 24 小時 WOWPASS 機。<a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=CU%20%EB%AF%BC%EB%9D%BD%ED%95%B4%EB%B3%80%EC%A0%90" target="_blank" rel="noopener">機台位置</a>
     </div>
+  </div>
+
+  <div class="daysum">
+    <b>D2 餐費：一人約 ₩82,000</b>（午餐 ₩13,000 ＋韓牛 ₩65,000 ＋小菜桌費 ₩4,000）
+    <span class="note">六人約 ₩492,000，是四天裡最貴的一天，韓牛就佔了八成。午餐改吃機張帝王蟹的話，六人再加 ₩250,000 以上。</span>
   </div>
 
   <div class="meals">
@@ -475,7 +502,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     </div>
     <div class="stop pin"><span class="t">12:15</span>
       <h3>李載茂披薩 <span style="font-weight:400;color:var(--muted);font-size:.85rem">이재모피자 · 西面</span></h3>
-      <p>1992 年開到現在的釜山傳奇，招牌是<b>起司餅邊（치즈크러스트）</b>，用韓國本土伊姆實起司，牽絲就是靠這個。<br>
+      <p>1992 年開到現在的釜山傳奇，招牌是<b>起司餅邊（치즈크러스트）</b>，牽絲就是靠這個。<b>2026 年 4 月起換成自家開發的低鹽起司</b>（原本用伊姆實），網路上吃過舊版的評價不能直接套用。<br>
       <b>原本的西面店 2026/5/25 已經收掉</b>，整併進<b>서면중앙점</b>（중앙대로691번길 5、10:00–21:00、<b>週日公休</b>）——10/3 是週六，有開。另一家 <b>전포점</b> 在田浦咖啡街那一帶，中午排不到的話，下午逗留組正好可以補。<br>
       <span class="links"><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EC%84%9C%EB%A9%B4%EC%A4%91%EC%95%99%EC%A0%90" target="_blank" rel="noopener">서면중앙점</a><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EC%A0%84%ED%8F%AC%EC%A0%90" target="_blank" rel="noopener">전포점</a></span><br>
       術前這餐吃披薩剛好：不辣、不油煙，不會一身味道進去。</p>
@@ -532,18 +559,22 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">李載茂披薩 <span>이재모피자</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EC%84%9C%EB%A9%B4%EC%A4%91%EC%95%99%EC%A0%90" target="_blank" rel="noopener">서면중앙점</a></div>
       <p class="why">今天的必吃項。六人建議點兩個大的＋起司餅邊，配可樂。上桌快，吃完直接走去逛街。</p>
+      <div class="cost">起司餅邊 S ₩25,000／L ₩29,000。六人點兩個 L＋飲料，一人約 ₩11,000–13,000</div>
     </div>
     <div class="opt">
       <div class="nm">排骨湯 <span>갈비탕</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EB%A9%B4%20%EA%B0%88%EB%B9%84%ED%83%95" target="_blank" rel="noopener">西面這幾家</a></div>
       <p class="why">兩家都在排的話改吃這個。有肉、有湯、不辣，六個人都吃得下，也不會像烤肉那樣一身味道過去。</p>
+      <div class="cost">一人 ₩12,000–16,000 <em>（推估）</em></div>
     </div>
     <div class="opt">
       <div class="nm">小麥冷麵＋餃子 <span>밀면 + 만두</span></div>
       <p class="why">上桌最快，吃完還有時間再逛一輪地下街。</p>
+      <div class="cost">一人 ₩10,000–13,000 <em>（冷麵 ₩6,500 ＋餃子）</em></div>
     </div>
     <div class="opt">
       <div class="nm">泡菜鍋／大醬鍋 <span>김치찌개 / 된장찌개</span></div>
       <p class="why">最日常的韓式定食，附小菜和飯。要做療程的人記得別點太辣。</p>
+      <div class="cost">一人 ₩9,000–13,000 <em>（推估，附小菜和飯）</em></div>
     </div>
   </div>
 
@@ -552,22 +583,31 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">蔘雞湯 <span>삼계탕</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%B6%80%EC%82%B0%EC%A7%84%EA%B5%AC%20%EC%82%BC%EA%B3%84%ED%83%95" target="_blank" rel="noopener">西面這幾家</a></div>
       <p class="why">完全不辣、溫補、湯多，術後第一餐最合適。整隻雞上桌，長輩會很滿意。</p>
+      <div class="cost">一人 ₩17,000–20,000 <em>（2026/5 釜山平均 ₩17,143，五年漲了 29%）</em></div>
     </div>
     <div class="opt">
       <div class="nm">雪濃湯／牛肉湯飯 <span>설렁탕 / 곰탕</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EB%A9%B4%20%EC%84%A4%EB%A0%81%ED%83%95" target="_blank" rel="noopener">西面這幾家</a></div>
       <p class="why">清爽、好消化，自己調鹹淡。想吃輕一點的選這個。</p>
+      <div class="cost">一人 ₩10,000–15,000 <em>（推估）</em></div>
     </div>
     <div class="opt">
       <div class="nm">韓式粥 <span>본죽</span></div>
       <p class="why">連鎖粥店，鮑魚粥、南瓜粥都有。做完療程完全沒胃口的人可以吃這個，其他人吃別的。</p>
+      <div class="cost">一人 ₩10,000–14,000 <em>（推估，鮑魚粥偏上限）</em></div>
     </div>
     <div class="opt">
       <div class="nm">水冷麵 <span>물냉면</span></div>
       <p class="why">冰涼、消腫、不刺激。注意別點 비빔냉면（辣拌的）。</p>
+      <div class="cost">一人 ₩10,000–13,000 <em>（推估）</em></div>
     </div>
     <div class="snacks">
       <b>不要排：</b>烤肉 고기집 · 辣炒雞 닭갈비 · 部隊鍋 부대찌개 · 燒酒 소주 · 汗蒸幕與任何三溫暖
     </div>
+  </div>
+
+  <div class="daysum">
+    <b>D3 餐費：一人約 ₩30,000</b>（披薩 ₩12,000 ＋蔘雞湯 ₩18,000）
+    <span class="note">六人約 ₩180,000。這天真正花錢的是購物不是吃飯，見下面「這趟要帶多少錢」。</span>
   </div>
 
   <div class="meals">
@@ -643,14 +683,20 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt">
       <div class="nm">黃豆芽湯飯 <span>콩나물국밥</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%97%B0%EC%82%B0%EB%8F%99%20%EC%BD%A9%EB%82%98%EB%AC%BC%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">連山這幾家</a></div>
       <p class="why">前一晚有人喝了酒的話，這是韓國人的標準解酒餐。清爽、便宜、快。</p>
+      <div class="cost">一人 ₩9,000–11,000 <em>（推估，比豬肉湯飯便宜一點）</em></div>
     </div>
     <div class="opt">
       <div class="nm">連鎖麵包店 <span>파리바게뜨 / 뚜레쥬르</span></div>
       <p class="why">不想吃湯的、想省時間的選這個。也可以順手買機上吃的。</p>
+      <div class="cost">一人 ₩5,000–8,000 <em>（推估，麵包＋咖啡）</em></div>
     </div>
     <div class="snacks">
-      <b>金海機場：</b>國際航廈有美食街和便利商店，11:25 到機場還有兩小時半，不趕。
+      <b>金海機場：</b>國際航廈有美食街和便利商店，11:25 到機場還有兩小時半，不趕。機場一餐抓一人 ₩12,000–18,000，比市區貴三到五成。
     </div>
+  </div>
+  <div class="daysum">
+    <b>D4 餐費：一人約 ₩21,000</b>（連山早餐 ₩11,000 ＋機場再吃一點 ₩10,000）
+    <span class="note">六人約 ₩126,000。機上不供餐的話，離境前在便利商店補的也算在這裡。</span>
   </div>
 </section>
 
@@ -690,6 +736,45 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
         <tr><th>韓牛餐廳</th><td>不在 KKday 上，要用 CatchTable／Naver 訂位，或請飯店代打電話。
           <span class="links"><a class="lk" href="https://app.catchtable.co.kr/" target="_blank" rel="noopener">CatchTable</a></span></td></tr>
       </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>這趟大概要帶多少錢</h3>
+    <div class="body">
+      <p>以下都是<b>一個人</b>的數字，<b>不含機票、住宿，也不含 10/3 那個預約行程</b>。匯率抓 ₩1,000 ≈ NT$23。</p>
+
+      <table>
+        <tr><th>交通卡</th><td>₩25,000<br><span style="color:var(--muted)">卡片 ₩3,000 ＋儲值 ₩22,000，四天地鐵公車東海線全含</span></td></tr>
+        <tr><th>斜坡滑車</th><td>₩28,500<br><span style="color:var(--muted)">三次券線上票</span></td></tr>
+        <tr><th>機場計程車</th><td>₩13,000<br><span style="color:var(--muted)">去回各一趟、兩台分攤六人</span></td></tr>
+        <tr><th>四天餐費</th><td><b>₩155,000</b><br><span style="color:var(--muted)">D1 ₩22,000 ＋D2 ₩82,000 ＋D3 ₩30,000 ＋D4 ₩21,000</span></td></tr>
+        <tr><th>小計</th><td><b>₩221,500</b>（約 NT$5,100）<span style="color:var(--muted)">　← 什麼都不買也要這麼多</span></td></tr>
+      </table>
+
+      <p style="margin-top:14px"><b>再加上購物，三種買法：</b></p>
+      <table>
+        <tr><th>省著買</th><td>＋₩50,000　合計 <b>₩271,500</b>（約 NT$6,200）<br><span style="color:var(--muted)">只帶伴手禮：零食、海苔、面膜幾盒</span></td></tr>
+        <tr><th>一般</th><td>＋₩150,000　合計 <b>₩371,500</b>（約 NT$8,500）<br><span style="color:var(--muted)">美妝一輪＋兩三件衣服＋伴手禮</span></td></tr>
+        <tr><th>大買</th><td>＋₩350,000　合計 <b>₩571,500</b>（約 NT$13,100）<br><span style="color:var(--muted)">上面那些再加免稅店的菸酒香水或一件外套</span></td></tr>
+      </table>
+
+      <p style="margin-top:14px"><b>購物那筆錢會花在哪：拿 Olive Young 的熱銷品當例子</b></p>
+      <table>
+        <tr><th>面膜</th><td>medicube 積雪草、Torriden，一盒 ₩10,000–20,000。常有 1+1，買前先看貨架標。</td></tr>
+        <tr><th>防曬</th><td>ROUND LAB 白樺樹、SKIN1004，一支 ₩15,000–25,000。</td></tr>
+        <tr><th>唇釉</th><td>fwee、peripera、3CE，一支 ₩10,000–13,000。3CE 的 Blur Water Tint 常缺貨。</td></tr>
+        <tr><th>精華／面霜</th><td>Centellian24 修護霜這類，一罐 ₩20,000–35,000。</td></tr>
+        <tr><th>零食保健</th><td>FOODOLOGY 膠原果凍那類，一盒 ₩15,000–25,000。</td></tr>
+        <tr><th>算一輪</th><td>面膜 3 盒＋防曬 1＋唇釉 2＋面霜 1 ≈ <b>₩110,000–140,000</b>，這就是上面「一般」那一檔的主要組成。</td></tr>
+      </table>
+
+      <p style="margin-top:14px"><b>衣服</b>：MUSINSA STANDARD 的 T 恤兩件裝 ₩29,790（2026/8 有調過價），西面地下街平價款一件抓 ₩10,000–30,000。<br>
+      <b>伴手禮</b>：新世界 B1 食品館或超市，₩20,000–50,000 收得完。</p>
+
+      <p style="margin-top:14px"><b>退稅門檻降了：單筆滿 ₩15,000 就能退</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。所以六個人分開結帳大多也都過得了門檻，不用硬湊。</p>
+
+      <p style="margin-top:12px;color:var(--muted);font-size:.83rem"><b>這些數字哪來的：</b>豬肉湯飯、小麥冷麵、蔘雞湯、李載茂披薩、豬腳、MUSINSA、退稅門檻是查到的實際標價或官方規則；標「推估」的那幾項（雪濃湯、排骨湯、粥、Outlet 美食街、烤貝、咖啡）是按同類行情抓的區間，沒有查到單店標價。<b>出發前一週要再對一次</b>，韓國這兩年餐飲漲得快，蔘雞湯五年就漲了 29%。</p>
     </div>
   </div>
 
@@ -799,7 +884,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <h3>退稅與免稅</h3>
     <div class="body">
       <p><b>免稅店（10/3 西面樂天 8F）：</b>當場付款、不帶走，10/4 在金海機場出境後的領取櫃檯拿貨，需要護照和登機證。所以要在 10/3 買完。</p>
-      <p><b>一般店家退稅：</b>看到 <b>TAX FREE</b> 標誌就可以問。金額門檻和「當場退」還是「機場退」的規則常常在改，<b>結帳時直接問店員最準</b>，別預設。要退稅一定要出示護照，收據和退稅單收好。</p>
+      <p><b>一般店家退稅：</b>看到 <b>TAX FREE</b> 標誌就可以問。<b>門檻已經降到單筆滿 ₩15,000</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。六個人分開結帳大多也過得了門檻，不用為了湊金額硬併單。「當場退」還是「機場退」各店不同，結帳時問一句最準。收據和退稅單收好。</p>
       <p><b>療程退稅：</b>部分醫療觀光指定機構的療程可以退，這件事直接問對方，順便問要不要準備護照影本。</p>
       <p><b>Olive Young</b> 通常在店內就能辦即時退稅，六個人分開結帳不如集中結帳容易過門檻。</p>
     </div>
@@ -829,7 +914,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
         <tr><th>天氣</th><td>10 月初釜山大約 18–25°C，日夜溫差大。滑車和廣安里海邊都在戶外，帶薄外套。出發前三天再看預報決定要不要帶傘。</td></tr>
         <tr><th>行李額度</th><td>去回程都是廉航，通常託運 15 公斤。買太多的話回程超重會被收錢，先確認自己那張機票的額度。</td></tr>
         <tr><th>時差</th><td>韓國比台灣快 1 小時。行程表上寫的都是當地時間。</td></tr>
-        <tr><th>現金</th><td>韓國連路邊攤都刷卡，但傳統市場、小吃攤、交通卡儲值還是要現金。每人 ₩100,000–150,000 足夠。</td></tr>
+        <tr><th>現金</th><td>韓國連路邊攤都刷卡，但傳統市場、小吃攤、交通卡儲值還是要現金。每人 ₩100,000–150,000 足夠——D1 那晚邊走邊吃的攤販幾乎只收現金，那段記得留鈔票。總預算見「這趟大概要帶多少錢」。</td></tr>
       </table>
     </div>
   </div>
@@ -886,7 +971,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
 <footer>
   時間都是當地時間。行程有彈性的部分：D1 的富平夜市、D2 下午的 Centum City、D3 空窗時段的田浦咖啡街，累了就砍，不影響主要安排。<br>
   門票價格、店家營業時間會變，出發前一週再對一次。<br>
-  最後更新：2026-09-07
+  最後更新：2026-09-10
 </footer>
 
 </div>
