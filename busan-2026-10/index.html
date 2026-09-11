@@ -157,7 +157,28 @@ nav button[aria-selected=true] b{color:var(--line)}
 .kit.on{display:block}
 .kit > h2{margin:0 0 18px;font-size:1.22rem;font-weight:700}
 .card{border:1px solid var(--hair);border-radius:9px;margin-bottom:14px;overflow:hidden}
-.card > h3{margin:0;padding:12px 15px;background:var(--panel);font-size:.93rem;font-weight:700;border-bottom:1px solid var(--hair)}
+.grp{margin:0 0 18px}
+.grp > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+  padding:13px 15px;border-radius:9px;background:var(--ink);color:#fff;
+}
+.grp > summary::-webkit-details-marker{display:none}
+.grp > summary .gt{flex:1;font-size:.95rem;font-weight:700}
+.grp > summary .gs{display:block;font-size:.78rem;font-weight:400;color:#9FB1C9;margin-top:2px}
+.grp > summary::after{content:"\25BE";color:#F0C78A;font-size:.95rem}
+.grp[open] > summary::after{content:"\25B4"}
+.grp > .gbody{padding:14px 0 2px}
+.card > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  margin:0;padding:12px 15px;background:var(--panel);font-size:.93rem;font-weight:700;
+}
+.card > summary::-webkit-details-marker{display:none}
+.card > summary::after{content:"\FF0B";margin-left:auto;color:var(--muted)}
+.card[open] > summary{border-bottom:1px solid var(--hair)}
+.card[open] > summary::after{content:"\FF0D"}
+.kgroup{margin:0 0 14px}
+.kgroup:last-child{margin-bottom:0}
+.kgroup > b{display:block;font-size:.8rem;color:var(--muted);letter-spacing:.04em;margin-bottom:7px}
 .card .body{padding:14px 15px}
 .card .body p{margin:0 0 9px;font-size:.88rem;color:var(--ink-2)}
 .card .body p:last-child{margin-bottom:0}
@@ -221,12 +242,8 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     10/3（六）到 10/5（一）是韓國三天連假，觀光景點與商圈都會很滿。已預約的行程在當天 15:00，出發前請再要一次書面確認。
   </div>
   <div class="flag calm">
-    <b>汗蒸幕拿掉了，那 2 小時 40 分還給逛街</b>
-    D2 下午改成 Centum City（新世界＋樂天兩間百貨連在一起），順路、不用多跑一趟，還省下每人約 ₩25,000 門票。要加回去的話只能排 10/2 那天——療程後數天不能碰高溫、泡湯、蒸氣，10/3 之後整趟都排不了溫熱設施。
-  </div>
-  <div class="flag calm">
-    <b>兩件要先訂</b>
-    韓牛餐廳（10/2 晚、6 人、海景位）和斜坡滑車門票。滑車現場也買得到，但連假前一天人潮難料。
+    <b>時間都是當地時間，累了可以砍</b>
+    行程有彈性的部分：D1 的富平夜市、D2 下午的 Centum City、D3 空窗時段的田浦咖啡街，累了就砍，不影響主要安排。
   </div>
   <div class="flag calm">
     <b>每天下面都有「可以改，但代價是什麼」</b>
@@ -268,8 +285,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="stop pin"><span class="t">20:40</span>
       <h3>南浦洞 逛街</h3>
       <p>光復路時尚街、BIFF 廣場、國際市場。路邊獨立門市與美妝店大多開到 21:30–22:00，先逛想買的，別先繞市場。</p>
-      <p class="move">地區限定：Olive Young 釜山南浦店 2026 年 8 月剛擴張遷移到光復路 64-1，從 200 坪變 900 坪、是首都圈以外最大的一家，開到 22:30；BIFF 廣場的堅果黑糖餅是這條街的招牌。<br>
-      Kakao Friends 南浦店<b>已經歇業</b>，釜山現在沒有門市了，別排。</p>
+      <p class="move">地區限定：Olive Young 釜山南浦店 2026 年 8 月剛擴張遷移到光復路 64-1，從 200 坪變 900 坪、是首都圈以外最大的一家，開到 22:30；BIFF 廣場的堅果黑糖餅是這條街的招牌。</p>
       <div class="links"><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=BIFF%EA%B4%91%EC%9E%A5%20%EB%B6%80%EC%82%B0" target="_blank" rel="noopener">BIFF 廣場</a><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5%20%EB%B6%80%EC%82%B0" target="_blank" rel="noopener">國際市場</a><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81%20%EB%B6%80%EC%82%B0%EB%82%A8%ED%8F%AC%EC%A0%90" target="_blank" rel="noopener">Olive Young</a></div>
     </div>
     <div class="stop"><span class="t">22:00</span>
@@ -284,18 +300,10 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
       <span class="alt">南浦洞放在第一晚，只逛 2.5 小時</span>
       <span class="cost">南浦洞逛完大約要 2–3 小時，剛好塞得下；西面要 3–4 小時，所以西面放 D3 一整天。兩邊對調的話，D3 15:00 這個死錨點會把南浦切成兩半。</span>
     </div>
-    <div class="fk">
-      <span class="alt">想改成：第一晚就去吃李載茂披薩本店</span>
-      <span class="cost">本店（光復洞）2025 年出現過排到 600 號、等 5 小時以上，而且 20:30 就 last order。19:35 才到南浦，現場排隊等於賭運氣。披薩已改排 D3 西面分店，全員都吃得到。真的想吃本店味道，光復洞有外帶專門店，可以買了邊逛邊吃。</span>
-    </div>
-    <div class="fk">
-      <span class="alt">想改成：晚餐吃富平豬腳一條街</span>
-      <span class="cost">六人分食一大盤最划算，但要坐 1 小時以上。等於用國際市場那段換一頓正式的晚餐。想這樣就把它當今晚主場，別兩個都要。</span>
-    </div>
   </div>
 
   <div class="meals">
-    <h3>今晚吃什麼（要快、要暖胃）</h3>
+    <h3>晚餐選項 · 要快、要暖胃</h3>
     <div class="opt star">
       <div class="nm">豬肉湯飯 <span>돼지국밥</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%82%A8%ED%8F%AC%EB%8F%99%20%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">南浦這幾家</a></div>
       <p class="why">釜山的代表食物，一人一鍋、上桌快、20 分鐘吃完。不敢吃內臟味的可以點「수육백반」（水煮肉切片＋飯）。</p>
@@ -313,26 +321,21 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     </div>
     <div class="opt">
       <div class="nm">富平豬腳一條街 <span>부평 족발골목</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EB%B6%80%ED%8F%89%20%EC%A1%B1%EB%B0%9C%EA%B3%A8%EB%AA%A9" target="_blank" rel="noopener">地圖</a></div>
-      <p class="why">六人分食一大盤最划算，但要坐 1 小時以上，會吃掉逛街時間。想吃就把它當今晚主餐，捨棄國際市場。</p>
+      <p class="why">六人分食一大盤最划算，但要坐 1 小時以上。等於用國際市場那段換一頓正式的晚餐——想這樣就把它當今晚主場，別兩個都要。</p>
       <div class="cost">六人 ₩90,000–120,000，一人約 ₩15,000–20,000 <em>（冷菜豬腳小份 ₩23,000，六人要點大份兩盤）</em></div>
+    </div>
+    <div class="opt">
+      <div class="nm">李載茂披薩 本店 <span>이재모피자 · 光復洞</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90%20%EA%B4%91%EB%B3%B5%EB%8F%99" target="_blank" rel="noopener">地圖</a></div>
+      <p class="why">想第一晚就吃的話要知道代價：本店 2025 年出現過排到 600 號、等 5 小時以上，而且 20:30 就 last order，19:35 才到南浦等於賭運氣。披薩已改排 D3 西面分店，全員都吃得到。真的想吃本店味道，光復洞有外帶專門店，買了邊逛邊吃。</p>
+      <div class="cost">起司餅邊 S ₩25,000／L ₩29,000，一人約 ₩11,000–13,000</div>
     </div>
     <div class="snacks">
       <b>邊走邊吃的：</b>堅果黑糖餅 씨앗호떡（BIFF 廣場招牌）· 拌冬粉 비빔당면 · 釜山魚板 어묵 · 糖餅旁的辣炒年糕 떡볶이<br>
       <b>一人抓 ₩8,000–12,000</b>：黑糖餅 ₩1,500–2,000、魚板 ₩1,000–2,000 一串、拌冬粉 ₩3,000–4,000、辣炒年糕 ₩4,000–5,000。攤販幾乎只收現金，這段的錢要留成鈔票。
     </div>
-  </div>
-
-  <div class="daysum">
-    <b>D1 餐費：一人約 ₩22,000</b>（晚餐 ₩12,000 ＋邊走邊吃 ₩10,000）
-    <span class="note">六人約 ₩132,000。改吃富平豬腳的話一人多 ₩5,000 上下，但那餐會吃掉逛街時間。</span>
-  </div>
-
-  <div class="meals">
-    <h3>點一下複製，直接給店員看</h3>
-    <div class="snacks" style="background:#fff">
-      <button class="kchip" data-k="여섯 명인데 자리 있나요?">여섯 명인데 자리 있나요?<span class="zh">我們六個人，有位子嗎？</span></button>
-      <button class="kchip" data-k="안 맵게 해주세요.">안 맵게 해주세요.<span class="zh">請不要做辣的</span></button>
-      <button class="kchip" data-k="카드 결제 되나요?">카드 결제 되나요?<span class="zh">可以刷卡嗎？</span></button>
+    <div class="daysum">
+      <b>D1 餐費：一人約 ₩22,000</b>（晚餐 ₩12,000 ＋邊走邊吃 ₩10,000）
+      <span class="note">六人約 ₩132,000。改吃富平豬腳的話一人多 ₩5,000 上下，但那餐會吃掉逛街時間。</span>
     </div>
   </div>
 </section>
@@ -402,10 +405,6 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
       <span class="cost">2 號線 3 站、約 8 分鐘就到。<b>這個以前不成立，現在成立了</b>——之前排除海雲台是因為要塞進來只能砍海東龍宮寺，汗蒸幕拿掉後時間是空的，不用砍任何東西。代價有三個：同一天會看兩個海灘（晚上還有廣安里），10 月初 18:20 就天黑、白天只剩一個多小時，晚餐要從海雲台再繞回民樂。另外海雲台最有名的天空膠囊是指定排除項，那個還是不會玩到。想看海就選這個，想買東西就留在 Centum City。</span>
     </div>
     <div class="fk">
-      <span class="alt">想改成：午餐吃機張市場帝王蟹，下午晚點再回市區</span>
-      <span class="cost">這個也是<b>汗蒸幕拿掉才變可行</b>——它原本的代價就是「SPA LAND 會被壓到 2 小時內」。現在剩下的代價是：當晚還是韓牛，一天兩頓大餐，六人預算要多抓 ₩250,000 以上；而且下午就沒有逛街了。不過拿掉汗蒸幕已經省下約 ₩150,000（六人門票），等於先補了一半。</span>
-    </div>
-    <div class="fk">
       <span class="alt">想改成：不進市區，留在東釜山逛 Outlet</span>
       <span class="cost">午餐本來就在 Outlet，零移動成本，而且它開到 21:00。但那裡是名牌折扣的戶外街區，跟美妝、平價服飾的採買目標不合；更麻煩的是東釜山回民樂要 50 分鐘以上，晚餐時間會變緊——留在 Centum City 只要一站。</span>
     </div>
@@ -428,7 +427,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     </div>
     <div class="opt">
       <div class="nm">機張海鮮／蟹料理 <span>기장 대게</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B8%B0%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">機張市場</a></div>
-      <p class="why">機張本來就是蟹產地，價格比市區的觀光店合理。想吃海鮮的話這裡吃比咋嘎其划算，但坐得久，看上面那格的代價。</p>
+      <p class="why">機張本來就是蟹產地，價格比市區的觀光店合理，想吃海鮮的話這裡吃比札嘎其划算。<b>代價：</b>要坐得久，下午就沒有逛街了；而且當晚還是韓牛，一天兩頓大餐，六人預算要多抓 ₩250,000 以上——拿掉汗蒸幕省下的約 ₩150,000（六人門票）先補了一半。</p>
       <div class="cost"><b>秤重時價</b>，六人抓 ₩250,000 起跳，另加小菜桌費一人 ₩7,000 <em>（螃蟹自己挑、秤完才算錢）</em></div>
     </div>
     <div class="opt">
@@ -465,21 +464,9 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
       <b>訂位：</b>CatchTable 或 Naver 訂位，或請飯店幫打電話。10/2 是週五晚上，當天走過去很可能沒位子。<a class="lk" href="https://app.catchtable.co.kr/" target="_blank" rel="noopener">CatchTable</a><br>
       <b>換錢：</b>民樂海邊的 CU민락해변점 有 24 小時 WOWPASS 機。<a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=CU%20%EB%AF%BC%EB%9D%BD%ED%95%B4%EB%B3%80%EC%A0%90" target="_blank" rel="noopener">機台位置</a>
     </div>
-  </div>
-
-  <div class="daysum">
-    <b>D2 餐費：一人約 ₩82,000</b>（午餐 ₩13,000 ＋韓牛 ₩65,000 ＋小菜桌費 ₩4,000）
-    <span class="note">六人約 ₩492,000，是四天裡最貴的一天，韓牛就佔了八成。午餐改吃機張帝王蟹的話，六人再加 ₩250,000 以上。</span>
-  </div>
-
-  <div class="meals">
-    <h3>滑車與逛街用</h3>
-    <div class="snacks" style="background:#fff">
-      <button class="kchip" data-k="세 번 타는 걸로 여섯 명 주세요.">세 번 타는 걸로 여섯 명 주세요.<span class="zh">六個人，各要三次券</span></button>
-      <button class="kchip" data-k="사물함 어디예요?">사물함 어디예요?<span class="zh">置物櫃在哪裡？</span></button>
-      <button class="kchip" data-k="이거 다른 색깔 있어요?">이거 다른 색깔 있어요?<span class="zh">這個有別的顏色嗎？</span></button>
-      <button class="kchip" data-k="선물 포장 해주세요.">선물 포장 해주세요.<span class="zh">請幫我包成禮物</span></button>
-      <button class="kchip" data-k="창가 자리로 예약했어요.">창가 자리로 예약했어요.<span class="zh">我訂的是靠窗的位子</span></button>
+    <div class="daysum">
+      <b>D2 餐費：一人約 ₩82,000</b>（午餐 ₩13,000 ＋韓牛 ₩65,000 ＋小菜桌費 ₩4,000）
+      <span class="note">六人約 ₩492,000，是四天裡最貴的一天，韓牛就佔了八成。午餐改吃機張帝王蟹的話，六人再加 ₩250,000 以上。</span>
     </div>
   </div>
 </section>
@@ -548,10 +535,6 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
       <span class="alt">想改成：免稅店只給 45 分鐘</span>
       <span class="cost">折衷。事先在群組把要買的品牌品項列好，到現場直接結帳不逛。省下 45 分鐘還給西面。</span>
     </div>
-    <div class="fk">
-      <span class="alt">想改成：術後晚餐還是吃烤肉</span>
-      <span class="cost">不建議。療程當天，煙燻熱氣＋酒精＋辣會讓腫脹更明顯，隔天照鏡子會後悔。烤肉已經排在 D2 的韓牛了，那餐比西面任何一家都好。</span>
-    </div>
   </div>
 
   <div class="meals">
@@ -601,25 +584,12 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
       <div class="cost">一人 ₩10,000–13,000 <em>（推估）</em></div>
     </div>
     <div class="snacks">
-      <b>不要排：</b>烤肉 고기집 · 辣炒雞 닭갈비 · 部隊鍋 부대찌개 · 燒酒 소주 · 汗蒸幕與任何三溫暖
+      <b>不要排：</b>烤肉 고기집 · 辣炒雞 닭갈비 · 部隊鍋 부대찌개 · 燒酒 소주 · 汗蒸幕與任何三溫暖<br>
+      療程當天煙燻熱氣＋酒精＋辣會讓腫脹更明顯，隔天照鏡子會後悔。想吃烤肉的話 D2 的韓牛已經排了，那餐比西面任何一家都好。
     </div>
-  </div>
-
-  <div class="daysum">
-    <b>D3 餐費：一人約 ₩30,000</b>（披薩 ₩12,000 ＋蔘雞湯 ₩18,000）
-    <span class="note">六人約 ₩180,000。這天真正花錢的是購物不是吃飯，見下面「這趟要帶多少錢」。</span>
-  </div>
-
-  <div class="meals">
-    <h3>現場溝通用</h3>
-    <div class="snacks" style="background:#fff">
-      <button class="kchip" data-k="세 시 예약했어요. 네 명이에요.">세 시 예약했어요. 네 명이에요.<span class="zh">我們預約 3 點，四個人</span></button>
-      <button class="kchip" data-k="여권 여기 있어요.">여권 여기 있어요.<span class="zh">護照在這裡</span></button>
-      <button class="kchip" data-k="시술 후에 주의할 점 알려주세요.">시술 후에 주의할 점 알려주세요.<span class="zh">請告訴我術後要注意什麼</span></button>
-      <button class="kchip" data-k="치즈크러스트로 주세요.">치즈크러스트로 주세요.<span class="zh">請給我起司餅邊的</span></button>
-      <button class="kchip" data-k="지금 웨이팅 얼마나 걸려요?">지금 웨이팅 얼마나 걸려요?<span class="zh">現在要等多久？</span></button>
-      <button class="kchip" data-k="택스 리펀 되나요?">택스 리펀 되나요?<span class="zh">可以退稅嗎？</span></button>
-      <button class="kchip" data-k="입어봐도 되나요?">입어봐도 되나요?<span class="zh">可以試穿嗎？</span></button>
+    <div class="daysum">
+      <b>D3 餐費：一人約 ₩30,000</b>（披薩 ₩12,000 ＋蔘雞湯 ₩18,000）
+      <span class="note">六人約 ₩180,000。這天真正花錢的是購物不是吃飯，見小幫手的「這趟大概要帶多少錢」。</span>
     </div>
   </div>
 </section>
@@ -679,6 +649,7 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="opt star">
       <div class="nm">豬肉湯飯 <span>돼지국밥</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%97%B0%EC%82%B0%EB%8F%99%20%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">連山這幾家</a></div>
       <p class="why">連山洞有幾家 24 小時營業，九點半就能坐下來。用釜山的招牌收尾很合理。</p>
+      <div class="cost">一人 ₩9,000–13,000 <em>（同 D1 南浦的行情）</em></div>
     </div>
     <div class="opt">
       <div class="nm">黃豆芽湯飯 <span>콩나물국밥</span><a class="lk" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%97%B0%EC%82%B0%EB%8F%99%20%EC%BD%A9%EB%82%98%EB%AC%BC%EA%B5%AD%EB%B0%A5" target="_blank" rel="noopener">連山這幾家</a></div>
@@ -693,10 +664,10 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
     <div class="snacks">
       <b>金海機場：</b>國際航廈有美食街和便利商店，11:25 到機場還有兩小時半，不趕。機場一餐抓一人 ₩12,000–18,000，比市區貴三到五成。
     </div>
-  </div>
-  <div class="daysum">
-    <b>D4 餐費：一人約 ₩21,000</b>（連山早餐 ₩11,000 ＋機場再吃一點 ₩10,000）
-    <span class="note">六人約 ₩126,000。機上不供餐的話，離境前在便利商店補的也算在這裡。</span>
+    <div class="daysum">
+      <b>D4 餐費：一人約 ₩21,000</b>（連山早餐 ₩11,000 ＋機場再吃一點 ₩10,000）
+      <span class="note">六人約 ₩126,000。機上不供餐的話，離境前在便利商店補的也算在這裡。</span>
+    </div>
   </div>
 </section>
 
@@ -704,274 +675,304 @@ footer{padding:22px 20px 40px;font-size:.8rem;color:var(--muted);border-top:1px 
 <section class="kit" id="kit" role="tabpanel" aria-labelledby="t5">
   <h2>小幫手</h2>
 
-  <div class="card">
-    <h3>頁面上那些藍色小按鈕</h3>
-    <div class="body">
-      <p>整份行程的地點、餐廳、票券旁邊都加了連結，一律開新分頁。三種：</p>
-      <table>
-        <tr><th>地圖</th><td>開 <b>Google Maps</b>，用韓文店名搜尋。選它是因為六個人手機裡都有、不用先裝東西，看位置和照片夠用了。</td></tr>
-        <tr><th>訂票</th><td>多數開的是 KKday 或 Klook 的<b>搜尋頁</b>而不是單一商品頁——商品會下架、價格會變，搜尋頁不會失效，到了那頁再挑方案。只有 Klook 的汗蒸幕票是直接連商品頁；真的失效就回平台自己搜。</td></tr>
-        <tr><th>官網</th><td>營業時間和公休以官網為準，出發前一週對一次。</td></tr>
-      </table>
-      <p style="margin-top:10px"><b>但地圖連結不能拿來導航。</b>Google Maps 在韓國查不到步行和大眾運輸路線，這是規定造成的，不是 app 壞了。要導航就先開地圖連結，在 Google Maps 頁面上把韓文店名複製起來，貼到 KakaoMap 或 Naver Map 再查路線。</p>
-      <p>另外每天最後面那排<b>灰底的韓文句子</b>是點一下就複製，那是給現場講不通的時候直接拿給店員看的，跟地圖連結是兩回事。</p>
-      <p><b>為什麼不直接連 Naver Map：</b>沒裝 app 的人點下去會看到整頁韓文，或被丟到商店頁面下載。用 Google Maps 開沒有這個問題，代價就是上面那句：只能看，不能導航。</p>
-      <p><b>寫「這幾家」的連結是搜尋結果，不是特定店。</b>像「南浦這幾家」是搜「남포동 돼지국밥」，現場看哪家有位子、哪家不用等就進去，不用堅持某一家。</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>出發前先訂什麼（KKday／Klook）</h3>
-    <div class="body">
-      <table>
-        <tr><th>斜坡滑車</th><td><b>建議先訂。</b>線上比現場便宜（三次券成人線上約 ₩28,500、現場 ₩30,000；二次券約 ₩25,650／₩27,000）。10/2 是連假前一天，人潮難料。價格出發前再確認一次。
-          <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%9C%E5%B1%B1+%E6%96%9C%E5%9D%A1%E6%BB%91%E8%BB%8A" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://busan.skylineluge.kr/" target="_blank" rel="noopener">官網</a></span></td></tr>
-        <tr><th>SPA LAND</th><td><b>這趟不去了</b>，D2 下午改成 Centum City 逛街。想加回來的話線上票比現場便宜，見 D2 那格的取捨。
-          <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%9C%E5%B1%B1+%E6%B1%97%E8%92%B8%E5%B9%95" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://www.klook.com/zh-TW/activity/33180-spa-land-centum-city-ticket-busan/" target="_blank" rel="noopener">Klook</a><a class="lk" href="https://www.shinsegae.com/store/entertainment/centum-spaland.do?storeCd=SC00008" target="_blank" rel="noopener">官方</a></span></td></tr>
-        <tr><th>eSIM</th><td><b>一定要先訂。</b>安裝過程需要網路，到韓國才想裝會卡住。
-          <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%9F%93%E5%9C%8B+eSIM" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://www.klook.com/zh-TW/destination/c46-busan/" target="_blank" rel="noopener">Klook</a></span></td></tr>
-        <tr><th>機場接送</th><td>可選。六個人兩台計程車現場叫也很快，不一定要預約。想省事就訂，價差不大。
-          <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%91%E6%B5%B7%E6%A9%9F%E5%A0%B4+%E6%8E%A5%E9%80%81" target="_blank" rel="noopener">KKday</a></span></td></tr>
-        <tr><th>Visit Busan Pass</th><td><b>不建議，拿掉汗蒸幕之後更不划算。</b>現在只剩滑車一項用得到。理由見 D2 那格的取捨。</td></tr>
-        <tr><th>韓牛餐廳</th><td>不在 KKday 上，要用 CatchTable／Naver 訂位，或請飯店代打電話。
-          <span class="links"><a class="lk" href="https://app.catchtable.co.kr/" target="_blank" rel="noopener">CatchTable</a></span></td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>這趟大概要帶多少錢</h3>
-    <div class="body">
-      <p>以下都是<b>一個人</b>的數字，<b>不含機票、住宿，也不含 10/3 那個預約行程</b>。匯率抓 ₩1,000 ≈ NT$23。</p>
-
-      <table>
-        <tr><th>交通卡</th><td>₩25,000<br><span style="color:var(--muted)">卡片 ₩3,000 ＋儲值 ₩22,000，四天地鐵公車東海線全含</span></td></tr>
-        <tr><th>斜坡滑車</th><td>₩28,500<br><span style="color:var(--muted)">三次券線上票</span></td></tr>
-        <tr><th>機場計程車</th><td>₩13,000<br><span style="color:var(--muted)">去回各一趟、兩台分攤六人</span></td></tr>
-        <tr><th>四天餐費</th><td><b>₩155,000</b><br><span style="color:var(--muted)">D1 ₩22,000 ＋D2 ₩82,000 ＋D3 ₩30,000 ＋D4 ₩21,000</span></td></tr>
-        <tr><th>小計</th><td><b>₩221,500</b>（約 NT$5,100）<span style="color:var(--muted)">　← 什麼都不買也要這麼多</span></td></tr>
-      </table>
-
-      <p style="margin-top:14px"><b>再加上購物，三種買法：</b></p>
-      <table>
-        <tr><th>省著買</th><td>＋₩50,000　合計 <b>₩271,500</b>（約 NT$6,200）<br><span style="color:var(--muted)">只帶伴手禮：零食、海苔、面膜幾盒</span></td></tr>
-        <tr><th>一般</th><td>＋₩150,000　合計 <b>₩371,500</b>（約 NT$8,500）<br><span style="color:var(--muted)">美妝一輪＋兩三件衣服＋伴手禮</span></td></tr>
-        <tr><th>大買</th><td>＋₩350,000　合計 <b>₩571,500</b>（約 NT$13,100）<br><span style="color:var(--muted)">上面那些再加免稅店的菸酒香水或一件外套</span></td></tr>
-      </table>
-
-      <p style="margin-top:14px"><b>購物那筆錢會花在哪：拿 Olive Young 的熱銷品當例子</b></p>
-      <table>
-        <tr><th>面膜</th><td>medicube 積雪草、Torriden，一盒 ₩10,000–20,000。常有 1+1，買前先看貨架標。</td></tr>
-        <tr><th>防曬</th><td>ROUND LAB 白樺樹、SKIN1004，一支 ₩15,000–25,000。</td></tr>
-        <tr><th>唇釉</th><td>fwee、peripera、3CE，一支 ₩10,000–13,000。3CE 的 Blur Water Tint 常缺貨。</td></tr>
-        <tr><th>精華／面霜</th><td>Centellian24 修護霜這類，一罐 ₩20,000–35,000。</td></tr>
-        <tr><th>零食保健</th><td>FOODOLOGY 膠原果凍那類，一盒 ₩15,000–25,000。</td></tr>
-        <tr><th>算一輪</th><td>面膜 3 盒＋防曬 1＋唇釉 2＋面霜 1 ≈ <b>₩110,000–140,000</b>，這就是上面「一般」那一檔的主要組成。</td></tr>
-      </table>
-
-      <p style="margin-top:14px"><b>衣服</b>：MUSINSA STANDARD 的 T 恤兩件裝 ₩29,790（2026/8 有調過價），西面地下街平價款一件抓 ₩10,000–30,000。<br>
-      <b>伴手禮</b>：新世界 B1 食品館或超市，₩20,000–50,000 收得完。</p>
-
-      <p style="margin-top:14px"><b>退稅門檻降了：單筆滿 ₩15,000 就能退</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。所以六個人分開結帳大多也都過得了門檻，不用硬湊。</p>
-
-      <p style="margin-top:12px;color:var(--muted);font-size:.83rem"><b>這些數字哪來的：</b>豬肉湯飯、小麥冷麵、蔘雞湯、李載茂披薩、豬腳、MUSINSA、退稅門檻是查到的實際標價或官方規則；標「推估」的那幾項（雪濃湯、排骨湯、粥、Outlet 美食街、烤貝、咖啡）是按同類行情抓的區間，沒有查到單店標價。<b>出發前一週要再對一次</b>，韓國這兩年餐飲漲得快，蔘雞湯五年就漲了 29%。</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>出發前先裝好的 App</h3>
-    <div class="body">
-      <div class="app">
-        <div class="ic" style="background:#F9E000;color:#3A1D1D">Kakao<br>Map</div>
-        <div>
-          <div class="nm">KakaoMap 或 Naver Map <em>카카오맵 / 네이버 지도</em> <span class="must">必裝</span></div>
-          <div class="ds">Google Maps 在韓國查不到步行和公車路線，這是最常見的踩雷。兩個選一個裝就好，介面都有中文。搜店名建議用韓文（可從本頁複製）。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id304608425" target="_blank" rel="noopener">KakaoMap iPhone</a><a class="lk" href="https://apps.apple.com/tw/app/id311867728" target="_blank" rel="noopener">Naver iPhone</a><a class="lk" href="https://play.google.com/store/search?q=%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A7%B5&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+  <details class="grp" open>
+    <summary><span class="gt">行前：一次性的準備與討論<span class="gs">訂票、預算、要裝的 App、待辦——出發前弄完就不用再翻</span></span></summary>
+    <div class="gbody">
+      <details class="card">
+        <summary>出發前先訂什麼（KKday／Klook）</summary>
+        <div class="body">
+          <table>
+            <tr><th>斜坡滑車</th><td><b>建議先訂。</b>線上比現場便宜（三次券成人線上約 ₩28,500、現場 ₩30,000；二次券約 ₩25,650／₩27,000）。10/2 是連假前一天，人潮難料。價格出發前再確認一次。
+              <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%9C%E5%B1%B1+%E6%96%9C%E5%9D%A1%E6%BB%91%E8%BB%8A" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://busan.skylineluge.kr/" target="_blank" rel="noopener">官網</a></span></td></tr>
+            <tr><th>SPA LAND</th><td><b>這趟不去了</b>，D2 下午改成 Centum City 逛街。想加回來的話線上票比現場便宜，見 D2 那格的取捨。
+              <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%9C%E5%B1%B1+%E6%B1%97%E8%92%B8%E5%B9%95" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://www.klook.com/zh-TW/activity/33180-spa-land-centum-city-ticket-busan/" target="_blank" rel="noopener">Klook</a><a class="lk" href="https://www.shinsegae.com/store/entertainment/centum-spaland.do?storeCd=SC00008" target="_blank" rel="noopener">官方</a></span></td></tr>
+            <tr><th>eSIM</th><td><b>一定要先訂。</b>安裝過程需要網路，到韓國才想裝會卡住。
+              <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%9F%93%E5%9C%8B+eSIM" target="_blank" rel="noopener">KKday</a><a class="lk" href="https://www.klook.com/zh-TW/destination/c46-busan/" target="_blank" rel="noopener">Klook</a></span></td></tr>
+            <tr><th>機場接送</th><td>可選。六個人兩台計程車現場叫也很快，不一定要預約。想省事就訂，價差不大。
+              <span class="links"><a class="lk" href="https://www.kkday.com/zh-tw/product/productlist/?keyword=%E9%87%91%E6%B5%B7%E6%A9%9F%E5%A0%B4+%E6%8E%A5%E9%80%81" target="_blank" rel="noopener">KKday</a></span></td></tr>
+            <tr><th>Visit Busan Pass</th><td><b>不建議，拿掉汗蒸幕之後更不划算。</b>現在只剩滑車一項用得到。理由見 D2 那格的取捨。</td></tr>
+            <tr><th>韓牛餐廳</th><td>不在 KKday 上，要用 CatchTable／Naver 訂位，或請飯店代打電話。
+              <span class="links"><a class="lk" href="https://app.catchtable.co.kr/" target="_blank" rel="noopener">CatchTable</a></span></td></tr>
+          </table>
         </div>
-      </div>
-      <div class="app">
-        <div class="ic" style="background:#000">T</div>
-        <div>
-          <div class="nm">Kakao T <em>카카오 T</em> <span class="must">必裝</span></div>
-          <div class="ds">韓國的叫車 App，路邊招不到車時靠它。需要手機號碼收簡訊驗證，所以台灣號碼要保持能收國際簡訊。綁信用卡就能直接付。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id981110422" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=%EC%B9%B4%EC%B9%B4%EC%98%A4%20T&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+      </details>
+      <details class="card">
+        <summary>這趟大概要帶多少錢</summary>
+        <div class="body">
+          <p>以下都是<b>一個人</b>的數字，<b>不含機票、住宿，也不含 10/3 那個預約行程</b>。匯率抓 ₩1,000 ≈ NT$23。</p>
+
+          <table>
+            <tr><th>交通卡</th><td>₩25,000<br><span style="color:var(--muted)">卡片 ₩3,000 ＋儲值 ₩22,000，四天地鐵公車東海線全含</span></td></tr>
+            <tr><th>斜坡滑車</th><td>₩28,500<br><span style="color:var(--muted)">三次券線上票</span></td></tr>
+            <tr><th>機場計程車</th><td>₩13,000<br><span style="color:var(--muted)">去回各一趟、兩台分攤六人</span></td></tr>
+            <tr><th>四天餐費</th><td><b>₩155,000</b><br><span style="color:var(--muted)">D1 ₩22,000 ＋D2 ₩82,000 ＋D3 ₩30,000 ＋D4 ₩21,000</span></td></tr>
+            <tr><th>小計</th><td><b>₩221,500</b>（約 NT$5,100）<span style="color:var(--muted)">　← 什麼都不買也要這麼多</span></td></tr>
+          </table>
+
+          <p style="margin-top:14px"><b>再加上購物，三種買法：</b></p>
+          <table>
+            <tr><th>省著買</th><td>＋₩50,000　合計 <b>₩271,500</b>（約 NT$6,200）<br><span style="color:var(--muted)">只帶伴手禮：零食、海苔、面膜幾盒</span></td></tr>
+            <tr><th>一般</th><td>＋₩150,000　合計 <b>₩371,500</b>（約 NT$8,500）<br><span style="color:var(--muted)">美妝一輪＋兩三件衣服＋伴手禮</span></td></tr>
+            <tr><th>大買</th><td>＋₩350,000　合計 <b>₩571,500</b>（約 NT$13,100）<br><span style="color:var(--muted)">上面那些再加免稅店的菸酒香水或一件外套</span></td></tr>
+          </table>
+
+          <p style="margin-top:14px"><b>購物那筆錢會花在哪：拿 Olive Young 的熱銷品當例子</b></p>
+          <table>
+            <tr><th>面膜</th><td>medicube 積雪草、Torriden，一盒 ₩10,000–20,000。常有 1+1，買前先看貨架標。</td></tr>
+            <tr><th>防曬</th><td>ROUND LAB 白樺樹、SKIN1004，一支 ₩15,000–25,000。</td></tr>
+            <tr><th>唇釉</th><td>fwee、peripera、3CE，一支 ₩10,000–13,000。3CE 的 Blur Water Tint 常缺貨。</td></tr>
+            <tr><th>精華／面霜</th><td>Centellian24 修護霜這類，一罐 ₩20,000–35,000。</td></tr>
+            <tr><th>零食保健</th><td>FOODOLOGY 膠原果凍那類，一盒 ₩15,000–25,000。</td></tr>
+            <tr><th>算一輪</th><td>面膜 3 盒＋防曬 1＋唇釉 2＋面霜 1 ≈ <b>₩110,000–140,000</b>，這就是上面「一般」那一檔的主要組成。</td></tr>
+          </table>
+
+          <p style="margin-top:14px"><b>衣服</b>：MUSINSA STANDARD 的 T 恤兩件裝 ₩29,790（2026/8 有調過價），西面地下街平價款一件抓 ₩10,000–30,000。<br>
+          <b>伴手禮</b>：新世界 B1 食品館或超市，₩20,000–50,000 收得完。</p>
+
+          <p style="margin-top:14px"><b>退稅門檻降了：單筆滿 ₩15,000 就能退</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。所以六個人分開結帳大多也都過得了門檻，不用硬湊。</p>
+
+          <p style="margin-top:12px;color:var(--muted);font-size:.83rem"><b>這些數字哪來的：</b>豬肉湯飯、小麥冷麵、蔘雞湯、李載茂披薩、豬腳、MUSINSA、退稅門檻是查到的實際標價或官方規則；標「推估」的那幾項（雪濃湯、排骨湯、粥、Outlet 美食街、烤貝、咖啡）是按同類行情抓的區間，沒有查到單店標價。<b>出發前一週要再對一次</b>，韓國這兩年餐飲漲得快，蔘雞湯五年就漲了 29%。</p>
         </div>
-      </div>
-      <div class="app">
-        <div class="ic" style="background:#00C73C">P</div>
-        <div>
-          <div class="nm">Papago <em>파파고</em> <span class="must">必裝</span></div>
-          <div class="ds">Naver 的翻譯，韓文比 Google 準。相機功能可以直接掃菜單和藥品說明，現場溝通也用得上。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id1147874819" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=papago&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+      </details>
+      <details class="card">
+        <summary>出發前先裝好的 App</summary>
+        <div class="body">
+          <div class="app">
+            <div class="ic" style="background:#F9E000;color:#3A1D1D">Kakao<br>Map</div>
+            <div>
+              <div class="nm">KakaoMap 或 Naver Map <em>카카오맵 / 네이버 지도</em> <span class="must">必裝</span></div>
+              <div class="ds">Google Maps 在韓國查不到步行和公車路線，這是最常見的踩雷。兩個選一個裝就好，介面都有中文。搜店名建議用韓文（可從本頁複製）。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id304608425" target="_blank" rel="noopener">KakaoMap iPhone</a><a class="lk" href="https://apps.apple.com/tw/app/id311867728" target="_blank" rel="noopener">Naver iPhone</a><a class="lk" href="https://play.google.com/store/search?q=%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A7%B5&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
+          <div class="app">
+            <div class="ic" style="background:#000">T</div>
+            <div>
+              <div class="nm">Kakao T <em>카카오 T</em> <span class="must">必裝</span></div>
+              <div class="ds">韓國的叫車 App，路邊招不到車時靠它。需要手機號碼收簡訊驗證，所以台灣號碼要保持能收國際簡訊。綁信用卡就能直接付。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id981110422" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=%EC%B9%B4%EC%B9%B4%EC%98%A4%20T&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
+          <div class="app">
+            <div class="ic" style="background:#00C73C">P</div>
+            <div>
+              <div class="nm">Papago <em>파파고</em> <span class="must">必裝</span></div>
+              <div class="ds">Naver 的翻譯，韓文比 Google 準。相機功能可以直接掃菜單和藥品說明，現場溝通也用得上。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id1147874819" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=papago&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
+          <div class="app">
+            <div class="ic" style="background:#FAE100;color:#3A1D1D">Talk</div>
+            <div>
+              <div class="nm">KakaoTalk <em>카카오톡</em></div>
+              <div class="ds">韓國的 LINE。店家、餐廳、包車司機幾乎都用它聯絡，加一下比打電話省事。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id362057947" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=kakaotalk&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
+          <div class="app">
+            <div class="ic" style="background:#FF3B5C">CT</div>
+            <div>
+              <div class="nm">CatchTable <em>캐치테이블</em></div>
+              <div class="ds">韓國主流訂位平台，韓牛餐廳和李載茂披薩都在上面。部分店家要韓國號碼，訂不了就改用 Naver 訂位或請飯店代打。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id1639046576" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=catchtable&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
+          <div class="app">
+            <div class="ic" style="background:#0B4F9E">地鐵</div>
+            <div>
+              <div class="nm">Subway Korea <em>또는 부산 도시철도</em></div>
+              <div class="ds">離線也能查路線和轉乘時間。這趟會用到 1、2、3 號線和東海線，四條都在裡面。</div>
+              <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id325924444" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=subway%20korea&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="app">
-        <div class="ic" style="background:#FAE100;color:#3A1D1D">Talk</div>
-        <div>
-          <div class="nm">KakaoTalk <em>카카오톡</em></div>
-          <div class="ds">韓國的 LINE。店家、餐廳、包車司機幾乎都用它聯絡，加一下比打電話省事。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id362057947" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=kakaotalk&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+      </details>
+      <details class="card">
+        <summary>eSIM 與網路</summary>
+        <div class="body">
+          <p>韓國實際上只有三家電信：<b>SKT、KT、LG U+</b>。所有 eSIM 品牌都是租這三家的網路，<b>選哪個平台不重要，看清楚背後是哪家網路才重要</b>——SKT 和 KT 在釜山市區與東海線沿線都穩。</p>
+          <table>
+            <tr><th>最省事</th><td><b>Klook eSIM</b>（KT 網路）。中文介面、一鍵安裝、24 小時中文客服，不穩可退。新手和兩位長輩選這個。</td></tr>
+            <tr><th>最便宜</th><td><b>KKday</b> 同規格通常比 Klook 便宜一些，但部分方案要到機場櫃檯領卡，落地會多一站。買之前看清楚是「線上發送 QR」還是「機場領取」。</td></tr>
+            <tr><th>要飆速</th><td><b>SKT 原廠 eSIM 吃到飽</b>。四天方案約台幣 500–600 上下。價格常變動，出發前以平台頁面為準。</td></tr>
+            <tr><th>選多少流量</th><td>每日 1–2GB 就夠。導航、社群、翻譯都不吃流量，除非要一直開直播。</td></tr>
+            <tr><th>什麼時候裝</th><td><b>在台灣就要先掃 QR 安裝</b>（安裝過程需要網路），落地後再啟用。到了韓國才想裝會卡住。</td></tr>
+            <tr><th>手機要求</th><td>iPhone XS 以後、Pixel 3 以後、近年三星旗艦支援 eSIM。不確定就到「設定 → 行動網路」看有沒有「加入 eSIM」。</td></tr>
+            <tr><th>台灣號碼</th><td>eSIM 是雙卡運作，<b>台灣號碼要保留並開啟國際漫遊簡訊</b>，Kakao T 驗證和刷卡通知都靠它。語音漫遊可以關掉。</td></tr>
+          </table>
+          <p style="margin-top:10px"><b>六個人為什麼不租 WiFi 分享器：</b>分享器要求全隊一起行動，而 10/3 下午你們會分成療程組和逛街組，分開之後有一組會斷網。這趟用 eSIM。</p>
         </div>
-      </div>
-      <div class="app">
-        <div class="ic" style="background:#FF3B5C">CT</div>
-        <div>
-          <div class="nm">CatchTable <em>캐치테이블</em></div>
-          <div class="ds">韓國主流訂位平台，韓牛餐廳和李載茂披薩都在上面。部分店家要韓國號碼，訂不了就改用 Naver 訂位或請飯店代打。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id1639046576" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=catchtable&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+      </details>
+      <details class="card">
+        <summary>交通卡：買 Cashbee 就夠</summary>
+        <div class="body">
+          <p><b>Cashbee 캐시비</b>：便利商店（CU、GS25、7-ELEVEN）就買得到，卡片本身約 ₩2,500–4,000，現金儲值。釜山地鐵、公車、<b>東海線</b>全部通刷，刷卡轉乘還有折扣。</p>
+          <p><b>首爾帶來的 T-money 也能用</b>，不用重買。</p>
+          <p><b>一日券（₩6,000）這趟不要買</b>：它<b>不含東海線</b>，而 10/2 去機張整天都靠東海線，買了反而虧。</p>
+          <p>每人一張，全程儲值 ₩20,000–25,000 綽綽有餘。剩額可在便利商店退（會收手續費），或留著下次來。</p>
+          <div class="links"><a class="lk" href="https://www.humetro.busan.kr/" target="_blank" rel="noopener">釜山交通公社</a></div>
         </div>
-      </div>
-      <div class="app">
-        <div class="ic" style="background:#0B4F9E">地鐵</div>
-        <div>
-          <div class="nm">Subway Korea <em>또는 부산 도시철도</em></div>
-          <div class="ds">離線也能查路線和轉乘時間。這趟會用到 1、2、3 號線和東海線，四條都在裡面。</div>
-          <div class="links"><a class="lk" href="https://apps.apple.com/tw/app/id325924444" target="_blank" rel="noopener">iPhone</a><a class="lk" href="https://play.google.com/store/search?q=subway%20korea&amp;c=apps" target="_blank" rel="noopener">Android</a></div>
+      </details>
+      <details class="card">
+        <summary>WOWPASS：機場辦不到，但住處樓下就有</summary>
+        <div class="body">
+          <p>WOWPASS 是外國人專用的預付卡，把「換匯＋刷卡＋交通卡」三合一。可以直接投台幣紙鈔，按當下匯率換成韓元存進卡裡，通常比在台灣換現金划算。</p>
+          <p><b>金海機場沒有機台。</b>官方機台清單全國 433 台，機場只有仁川 T1／T2、金浦、大邱、濟州有，金海不在其中。網路上說「金海機場一落地就能開卡」的是錯的，不要照那個規劃。</p>
+          <p><b>但釜山市區有 60 台，而且這趟動線上到處都是：</b></p>
+          <table>
+            <tr><th>連山（住處）</th><td>Hyatt Place 釜山連山，連山站 5 號出口 210m、6 樓大廳，<b>24 小時、外部人士可用</b>。落地當晚辦最順。</td></tr>
+            <tr><th>西面</th><td>樂天百貨釜山本店 1F 後門退稅處旁（10:30–20:30，雙向換匯）· Olive Young 西面 Town 店（10:00–23:00）</td></tr>
+            <tr><th>南浦</th><td>樂天百貨光復店 · GS25 자갈치점（24 小時）<br><span style="color:var(--muted)">原本列的 Olive Young 南浦 Town 已於 2026/8 搬遷擴店，新址有沒有機台沒查到，不要當成有。</span></td></tr>
+            <tr><th>Centum City</th><td>Olive Young 釜山 Centum 店（10:00–22:30）</td></tr>
+            <tr><th>民樂（D2 韓牛）</th><td>CU민락해변점（24 小時）</td></tr>
+            <tr><th>東釜山（D2 午餐）</th><td>樂天 Premium Outlet 東釜山店（10:30–21:00）</td></tr>
+          </table>
+          <p style="margin-top:10px"><b>辦不辦？</b>四天三夜、六個人，<b>一張國際信用卡＋一張 Cashbee ＋少量現金</b>就完全夠用，每人 ₩100,000–150,000 現金即可。WOWPASS 適合「不想在台灣換那麼多現金、想要好一點匯率」的人。要辦就落地當晚在連山那台辦，不用擠機場。</p>
+          <p><b>離境退款：</b>只能退回韓元現金、每次扣 ₩1,000 手續費，而且只退「刷卡金」錢包，交通卡錢包要去便利商店退。最划算的做法是回國前把卡刷到接近零。</p>
+          <div class="links"><a class="lk" href="https://www.wowpass.io/" target="_blank" rel="noopener">官網與機台地圖</a></div>
         </div>
-      </div>
+      </details>
+      <details class="card">
+        <summary>雜事</summary>
+        <div class="body">
+          <table>
+            <tr><th>插座</th><td>220V、60Hz、圓形兩孔（歐規 C／F）。台灣的扁腳插頭插不進去，要帶轉接頭。吹風機之類高功率電器要確認有雙電壓標示。飯店櫃台通常可以借轉接頭，但六個人別賭。</td></tr>
+            <tr><th>天氣</th><td>10 月初釜山大約 18–25°C，日夜溫差大。滑車和廣安里海邊都在戶外，帶薄外套。出發前三天再看預報決定要不要帶傘。</td></tr>
+            <tr><th>行李額度</th><td>去回程都是廉航，通常託運 15 公斤。買太多的話回程超重會被收錢，先確認自己那張機票的額度。</td></tr>
+            <tr><th>時差</th><td>韓國比台灣快 1 小時。行程表上寫的都是當地時間。</td></tr>
+            <tr><th>現金</th><td>韓國連路邊攤都刷卡，但傳統市場、小吃攤、交通卡儲值還是要現金。每人 ₩100,000–150,000 足夠——D1 那晚邊走邊吃的攤販幾乎只收現金，那段記得留鈔票。總預算見「這趟大概要帶多少錢」。</td></tr>
+          </table>
+        </div>
+      </details>
+      <details class="card">
+        <summary>這趟沒排什麼，以及為什麼</summary>
+        <div class="body">
+          <table>
+            <tr><th>汗蒸幕 SPA LAND</th><td>團隊決定不去，原本的 D2 下午時段改成 Centum City 逛街，省下六人約 ₩150,000。想加回來只能加在 10/2（療程後不能碰高溫），代價見 D2 那格。</td></tr>
+            <tr><th>天空膠囊</th><td>指定排除，沒排。海雲台藍線公園的海岸列車同理。</td></tr>
+            <tr><th>海雲台</th><td><b>這條理由已經失效。</b>原本是「要塞只能砍海東龍宮寺」，汗蒸幕拿掉後 D2 下午整段是空的，不用砍任何東西就換得進去。現在的取捨變成「看海還是逛街」，見 D2 那格。招牌的天空膠囊仍是指定排除項。</td></tr>
+            <tr><th>帝王蟹</th><td>列為 D2 午餐的選項之一（機張是產地，比市區划算），但沒排成固定行程——當晚就是韓牛燒烤，一天兩頓大餐，預算和時間都會爆。</td></tr>
+            <tr><th>甘川洞文化村</th><td>只有 D4 上午塞得下，但那天是連假最後一天＋14:15 的飛機＋六件行李。真的想去，只能拿 D1 南浦洞去換。</td></tr>
+            <tr><th>札嘎其市場</th><td>南浦洞旁邊，但生魚片要坐得久。D1 只有 2.5 小時，逛街和吃海鮮二選一，這趟選逛街。</td></tr>
+            <tr><th>Visit Busan Pass</th><td>算過不划算，見 D2 那格。</td></tr>
+            <tr><th>白淺灘、松島纜車</th><td>都在影島／西南邊，跟這趟的 1 號線＋東海線動線完全不同方向，加進來要多花一個半天。</td></tr>
+          </table>
+          <p style="margin-top:10px">以上都不是漏掉，是算過之後選擇不排。想改的話上面每一格都寫了代價，看完再提。</p>
+        </div>
+      </details>
+      <details class="card">
+        <summary>出發前待辦</summary>
+        <div class="body">
+          <ul class="todo">
+            <li><label><input type="checkbox"><span>預約書面確認 10/3 15:00<span class="sub">10/3 是國定假日，請對方用 KakaoTalk 或 email 回明確的日期時間，不要只靠口頭</span></span></label></li>
+            <li><label><input type="checkbox"><span>韓牛餐廳訂位<span class="sub">10/2 晚 19:30、6 人、海景位或包廂</span></span></label></li>
+            <li><label><input type="checkbox"><span>斜坡滑車線上票<span class="sub">每人 3–4 趟</span></span></label></li>
+            <li><label><input type="checkbox"><span>李載茂披薩查一下 CatchTable 能不能候位<span class="sub">10/3 是連假第一天，서면중앙점 和 전포점 哪家能線上抽號就用哪家</span></span></label></li>
+            <li><label><input type="checkbox"><span>免稅店要買什麼，群組先列清單<span class="sub">10/3 上午只有 1.5 小時，現場才想會來不及</span></span></label></li>
+            <li><label><input type="checkbox"><span>eSIM 在台灣安裝完成<span class="sub">六個人一個一個確認，不要到機場才發現有人沒裝</span></span></label></li>
+            <li><label><input type="checkbox"><span>裝好 KakaoMap、Kakao T、Papago</span></label></li>
+            <li><label><input type="checkbox"><span>圓孔轉接頭、行動電源</span></label></li>
+            <li><label><input type="checkbox"><span>滑車要穿的包鞋</span></label></li>
+            <li><label><input type="checkbox"><span>術後用的面膜與保濕噴霧<span class="sub">放隨身行李，回程機上用</span></span></label></li>
+            <li><label><input type="checkbox"><span>護照資料頁與機票拍照備份</span></label></li>
+          </ul>
+        </div>
+      </details>
     </div>
-  </div>
+  </details>
 
-  <div class="card">
-    <h3>交通卡：買 Cashbee 就夠</h3>
-    <div class="body">
-      <p><b>Cashbee 캐시비</b>：便利商店（CU、GS25、7-ELEVEN）就買得到，卡片本身約 ₩2,500–4,000，現金儲值。釜山地鐵、公車、<b>東海線</b>全部通刷，刷卡轉乘還有折扣。</p>
-      <p><b>首爾帶來的 T-money 也能用</b>，不用重買。</p>
-      <p><b>一日券（₩6,000）這趟不要買</b>：它<b>不含東海線</b>，而 10/2 去機張整天都靠東海線，買了反而虧。</p>
-      <p>每人一張，全程儲值 ₩20,000–25,000 綽綽有餘。剩額可在便利商店退（會收手續費），或留著下次來。</p>
-      <div class="links"><a class="lk" href="https://www.humetro.busan.kr/" target="_blank" rel="noopener">釜山交通公社</a></div>
+  <details class="grp" open>
+    <summary><span class="gt">行程中：隨時要查的備注<span class="gs">現場韓文、退稅、禮節、出狀況的電話</span></span></summary>
+    <div class="gbody">
+      <details class="card" open>
+        <summary>現場用的韓文（點一下複製）</summary>
+        <div class="body">
+          <p>點一下就複製，直接拿給店員看。這 15 句照使用場景分好了。</p>
+          <div class="kgroup">
+            <b>餐廳：進門、點餐、結帳</b>
+            <button class="kchip" data-k="여섯 명인데 자리 있나요?">여섯 명인데 자리 있나요?<span class="zh">我們六個人，有位子嗎？</span></button>
+            <button class="kchip" data-k="창가 자리로 예약했어요.">창가 자리로 예약했어요.<span class="zh">我訂的是靠窗的位子（D2 韓牛）</span></button>
+            <button class="kchip" data-k="지금 웨이팅 얼마나 걸려요?">지금 웨이팅 얼마나 걸려요?<span class="zh">現在要等多久？</span></button>
+            <button class="kchip" data-k="안 맵게 해주세요.">안 맵게 해주세요.<span class="zh">請不要做辣的</span></button>
+            <button class="kchip" data-k="치즈크러스트로 주세요.">치즈크러스트로 주세요.<span class="zh">請給我起司餅邊的（李載茂披薩）</span></button>
+            <button class="kchip" data-k="카드 결제 되나요?">카드 결제 되나요?<span class="zh">可以刷卡嗎？</span></button>
+          </div>
+          <div class="kgroup">
+            <b>逛街：試穿、包裝、退稅</b>
+            <button class="kchip" data-k="입어봐도 되나요?">입어봐도 되나요?<span class="zh">可以試穿嗎？</span></button>
+            <button class="kchip" data-k="이거 다른 색깔 있어요?">이거 다른 색깔 있어요?<span class="zh">這個有別的顏色嗎？</span></button>
+            <button class="kchip" data-k="선물 포장 해주세요.">선물 포장 해주세요.<span class="zh">請幫我包成禮物</span></button>
+            <button class="kchip" data-k="택스 리펀 되나요?">택스 리펀 되나요?<span class="zh">可以退稅嗎？</span></button>
+          </div>
+          <div class="kgroup">
+            <b>斜坡滑車（10/2 上午）</b>
+            <button class="kchip" data-k="세 번 타는 걸로 여섯 명 주세요.">세 번 타는 걸로 여섯 명 주세요.<span class="zh">六個人，各要三次券</span></button>
+            <button class="kchip" data-k="사물함 어디예요?">사물함 어디예요?<span class="zh">置物櫃在哪裡？</span></button>
+          </div>
+          <div class="kgroup">
+            <b>預約行程（10/3 15:00）</b>
+            <button class="kchip" data-k="세 시 예약했어요. 네 명이에요.">세 시 예약했어요. 네 명이에요.<span class="zh">我們預約 3 點，四個人</span></button>
+            <button class="kchip" data-k="여권 여기 있어요.">여권 여기 있어요.<span class="zh">護照在這裡</span></button>
+            <button class="kchip" data-k="시술 후에 주의할 점 알려주세요.">시술 후에 주의할 점 알려주세요.<span class="zh">請告訴我術後要注意什麼</span></button>
+          </div>
+        </div>
+      </details>
+      <details class="card">
+        <summary>頁面上那些藍色小按鈕</summary>
+        <div class="body">
+          <p>整份行程的地點、餐廳、票券旁邊都加了連結，一律開新分頁。三種：</p>
+          <table>
+            <tr><th>地圖</th><td>開 <b>Google Maps</b>，用韓文店名搜尋。選它是因為六個人手機裡都有、不用先裝東西，看位置和照片夠用了。</td></tr>
+            <tr><th>訂票</th><td>多數開的是 KKday 或 Klook 的<b>搜尋頁</b>而不是單一商品頁——商品會下架、價格會變，搜尋頁不會失效，到了那頁再挑方案。只有 Klook 的汗蒸幕票是直接連商品頁；真的失效就回平台自己搜。</td></tr>
+            <tr><th>官網</th><td>營業時間和公休以官網為準，出發前一週對一次。</td></tr>
+          </table>
+          <p style="margin-top:10px"><b>但地圖連結不能拿來導航。</b>Google Maps 在韓國查不到步行和大眾運輸路線，這是規定造成的，不是 app 壞了。要導航就先開地圖連結，在 Google Maps 頁面上把韓文店名複製起來，貼到 KakaoMap 或 Naver Map 再查路線。</p>
+          <p>另外「行程中」那區的<b>現場用的韓文</b>是點一下就複製，那是給現場講不通的時候直接拿給店員看的，跟地圖連結是兩回事。</p>
+          <p><b>為什麼不直接連 Naver Map：</b>沒裝 app 的人點下去會看到整頁韓文，或被丟到商店頁面下載。用 Google Maps 開沒有這個問題，代價就是上面那句：只能看，不能導航。</p>
+          <p><b>寫「這幾家」的連結是搜尋結果，不是特定店。</b>像「南浦這幾家」是搜「남포동 돼지국밥」，現場看哪家有位子、哪家不用等就進去，不用堅持某一家。</p>
+        </div>
+      </details>
+      <details class="card">
+        <summary>退稅與免稅</summary>
+        <div class="body">
+          <p><b>免稅店（10/3 西面樂天 8F）：</b>當場付款、不帶走，10/4 在金海機場出境後的領取櫃檯拿貨，需要護照和登機證。所以要在 10/3 買完。</p>
+          <p><b>一般店家退稅：</b>看到 <b>TAX FREE</b> 標誌就可以問。<b>門檻已經降到單筆滿 ₩15,000</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。六個人分開結帳大多也過得了門檻，不用為了湊金額硬併單。「當場退」還是「機場退」各店不同，結帳時問一句最準。收據和退稅單收好。</p>
+          <p><b>療程退稅：</b>部分醫療觀光指定機構的療程可以退，這件事直接問對方，順便問要不要準備護照影本。</p>
+          <p><b>Olive Young</b> 通常在店內就能辦即時退稅，六個人分開結帳不如集中結帳容易過門檻。</p>
+        </div>
+      </details>
+      <details class="card">
+        <summary>禮節與禁忌（會被看出來的那幾件）</summary>
+        <div class="body">
+          <table>
+            <tr><th>垃圾桶</th><td>街上幾乎沒有公用垃圾桶。隨身帶個小塑膠袋裝自己的垃圾，回飯店或便利商店再丟。</td></tr>
+            <tr><th>博愛座</th><td>地鐵車廂兩端的博愛座和孕婦專用座，就算空著當地人也不會去坐。空著也別坐。</td></tr>
+            <tr><th>吃飯</th><td>碗放在桌上吃，不捧碗——捧碗在韓國是乞討的姿勢。用湯匙吃飯和湯，筷子夾菜，不要用筷子插飯。</td></tr>
+            <tr><th>小菜</th><td>免費，吃完可以續，但別點了一桌不吃。續小菜說「밑반찬 좀 더 주세요」。</td></tr>
+            <tr><th>倒酒</th><td>晚輩幫長輩倒，雙手拿瓶；長輩倒給你要雙手接。喝的時候側身避開長輩方向。這趟有兩位長輩，年輕人記得動作。</td></tr>
+            <tr><th>脫鞋</th><td>部分傳統餐廳（地板座位）、民宿、汗蒸幕要脫鞋。這趟不去汗蒸幕了，但地板座位的餐廳隨時會遇到，襪子每天都穿好看一點的。</td></tr>
+            <tr><th>拍照</th><td>店內、傳統市場攤位拍照前先問一聲。診療場所內部通常不能拍。</td></tr>
+            <tr><th>小費</th><td>不用給。餐廳、計程車、飯店都沒有小費文化，硬要給反而尷尬。</td></tr>
+          </table>
+        </div>
+      </details>
+      <details class="card">
+        <summary>出狀況的時候</summary>
+        <div class="body">
+          <table>
+            <tr><th>1330</th><td>韓國觀光公社旅遊諮詢熱線，24 小時，<b>有中文服務</b>。迷路、找店、溝通不了都可以打，也能三方通話幫你跟店家講。<a class="lk tel" href="tel:1330">撥打</a></td></tr>
+            <tr><th>112 / 119</th><td>警察／消防與救護。<a class="lk tel" href="tel:112">112</a><a class="lk tel" href="tel:119">119</a></td></tr>
+            <tr><th>台灣急難救助</th><td>旅外國人急難救助全球免付費專線：韓國國際冠碼 + 800-0885-0885。僅限車禍、搶劫、生命安危等真正緊急狀況。</td></tr>
+            <tr><th>證件遺失</th><td>先報警取得報案證明，再聯絡駐韓國台北代表部釜山辦事處。出發前把護照資料頁拍照存手機和雲端各一份。</td></tr>
+          </table>
+        </div>
+      </details>
     </div>
-  </div>
-
-  <div class="card">
-    <h3>WOWPASS：機場辦不到，但住處樓下就有</h3>
-    <div class="body">
-      <p>WOWPASS 是外國人專用的預付卡，把「換匯＋刷卡＋交通卡」三合一。可以直接投台幣紙鈔，按當下匯率換成韓元存進卡裡，通常比在台灣換現金划算。</p>
-      <p><b>金海機場沒有機台。</b>官方機台清單全國 433 台，機場只有仁川 T1／T2、金浦、大邱、濟州有，金海不在其中。網路上說「金海機場一落地就能開卡」的是錯的，不要照那個規劃。</p>
-      <p><b>但釜山市區有 60 台，而且這趟動線上到處都是：</b></p>
-      <table>
-        <tr><th>連山（住處）</th><td>Hyatt Place 釜山連山，連山站 5 號出口 210m、6 樓大廳，<b>24 小時、外部人士可用</b>。落地當晚辦最順。</td></tr>
-        <tr><th>西面</th><td>樂天百貨釜山本店 1F 後門退稅處旁（10:30–20:30，雙向換匯）· Olive Young 西面 Town 店（10:00–23:00）</td></tr>
-        <tr><th>南浦</th><td>樂天百貨光復店 · GS25 자갈치점（24 小時）<br><span style="color:var(--muted)">原本列的 Olive Young 南浦 Town 已於 2026/8 搬遷擴店，新址有沒有機台沒查到，不要當成有。</span></td></tr>
-        <tr><th>Centum City</th><td>Olive Young 釜山 Centum 店（10:00–22:30）</td></tr>
-        <tr><th>民樂（D2 韓牛）</th><td>CU민락해변점（24 小時）</td></tr>
-        <tr><th>東釜山（D2 午餐）</th><td>樂天 Premium Outlet 東釜山店（10:30–21:00）</td></tr>
-      </table>
-      <p style="margin-top:10px"><b>辦不辦？</b>四天三夜、六個人，<b>一張國際信用卡＋一張 Cashbee ＋少量現金</b>就完全夠用，每人 ₩100,000–150,000 現金即可。WOWPASS 適合「不想在台灣換那麼多現金、想要好一點匯率」的人。要辦就落地當晚在連山那台辦，不用擠機場。</p>
-      <p><b>離境退款：</b>只能退回韓元現金、每次扣 ₩1,000 手續費，而且只退「刷卡金」錢包，交通卡錢包要去便利商店退。最划算的做法是回國前把卡刷到接近零。</p>
-      <div class="links"><a class="lk" href="https://www.wowpass.io/" target="_blank" rel="noopener">官網與機台地圖</a></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>eSIM 與網路</h3>
-    <div class="body">
-      <p>韓國實際上只有三家電信：<b>SKT、KT、LG U+</b>。所有 eSIM 品牌都是租這三家的網路，<b>選哪個平台不重要，看清楚背後是哪家網路才重要</b>——SKT 和 KT 在釜山市區與東海線沿線都穩。</p>
-      <table>
-        <tr><th>最省事</th><td><b>Klook eSIM</b>（KT 網路）。中文介面、一鍵安裝、24 小時中文客服，不穩可退。新手和兩位長輩選這個。</td></tr>
-        <tr><th>最便宜</th><td><b>KKday</b> 同規格通常比 Klook 便宜一些，但部分方案要到機場櫃檯領卡，落地會多一站。買之前看清楚是「線上發送 QR」還是「機場領取」。</td></tr>
-        <tr><th>要飆速</th><td><b>SKT 原廠 eSIM 吃到飽</b>。四天方案約台幣 500–600 上下。價格常變動，出發前以平台頁面為準。</td></tr>
-        <tr><th>選多少流量</th><td>每日 1–2GB 就夠。導航、社群、翻譯都不吃流量，除非要一直開直播。</td></tr>
-        <tr><th>什麼時候裝</th><td><b>在台灣就要先掃 QR 安裝</b>（安裝過程需要網路），落地後再啟用。到了韓國才想裝會卡住。</td></tr>
-        <tr><th>手機要求</th><td>iPhone XS 以後、Pixel 3 以後、近年三星旗艦支援 eSIM。不確定就到「設定 → 行動網路」看有沒有「加入 eSIM」。</td></tr>
-        <tr><th>台灣號碼</th><td>eSIM 是雙卡運作，<b>台灣號碼要保留並開啟國際漫遊簡訊</b>，Kakao T 驗證和刷卡通知都靠它。語音漫遊可以關掉。</td></tr>
-      </table>
-      <p style="margin-top:10px"><b>六個人為什麼不租 WiFi 分享器：</b>分享器要求全隊一起行動，而 10/3 下午你們會分成療程組和逛街組，分開之後有一組會斷網。這趟用 eSIM。</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>退稅與免稅</h3>
-    <div class="body">
-      <p><b>免稅店（10/3 西面樂天 8F）：</b>當場付款、不帶走，10/4 在金海機場出境後的領取櫃檯拿貨，需要護照和登機證。所以要在 10/3 買完。</p>
-      <p><b>一般店家退稅：</b>看到 <b>TAX FREE</b> 標誌就可以問。<b>門檻已經降到單筆滿 ₩15,000</b>（之前是 ₩30,000），單筆上限 ₩600,000，結帳時出示護照。六個人分開結帳大多也過得了門檻，不用為了湊金額硬併單。「當場退」還是「機場退」各店不同，結帳時問一句最準。收據和退稅單收好。</p>
-      <p><b>療程退稅：</b>部分醫療觀光指定機構的療程可以退，這件事直接問對方，順便問要不要準備護照影本。</p>
-      <p><b>Olive Young</b> 通常在店內就能辦即時退稅，六個人分開結帳不如集中結帳容易過門檻。</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>禮節與禁忌（會被看出來的那幾件）</h3>
-    <div class="body">
-      <table>
-        <tr><th>垃圾桶</th><td>街上幾乎沒有公用垃圾桶。隨身帶個小塑膠袋裝自己的垃圾，回飯店或便利商店再丟。</td></tr>
-        <tr><th>博愛座</th><td>地鐵車廂兩端的博愛座和孕婦專用座，就算空著當地人也不會去坐。空著也別坐。</td></tr>
-        <tr><th>吃飯</th><td>碗放在桌上吃，不捧碗——捧碗在韓國是乞討的姿勢。用湯匙吃飯和湯，筷子夾菜，不要用筷子插飯。</td></tr>
-        <tr><th>小菜</th><td>免費，吃完可以續，但別點了一桌不吃。續小菜說「밑반찬 좀 더 주세요」。</td></tr>
-        <tr><th>倒酒</th><td>晚輩幫長輩倒，雙手拿瓶；長輩倒給你要雙手接。喝的時候側身避開長輩方向。這趟有兩位長輩，年輕人記得動作。</td></tr>
-        <tr><th>脫鞋</th><td>部分傳統餐廳（地板座位）、民宿、汗蒸幕要脫鞋。這趟不去汗蒸幕了，但地板座位的餐廳隨時會遇到，襪子每天都穿好看一點的。</td></tr>
-        <tr><th>拍照</th><td>店內、傳統市場攤位拍照前先問一聲。診療場所內部通常不能拍。</td></tr>
-        <tr><th>小費</th><td>不用給。餐廳、計程車、飯店都沒有小費文化，硬要給反而尷尬。</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>雜事</h3>
-    <div class="body">
-      <table>
-        <tr><th>插座</th><td>220V、60Hz、圓形兩孔（歐規 C／F）。台灣的扁腳插頭插不進去，要帶轉接頭。吹風機之類高功率電器要確認有雙電壓標示。飯店櫃台通常可以借轉接頭，但六個人別賭。</td></tr>
-        <tr><th>天氣</th><td>10 月初釜山大約 18–25°C，日夜溫差大。滑車和廣安里海邊都在戶外，帶薄外套。出發前三天再看預報決定要不要帶傘。</td></tr>
-        <tr><th>行李額度</th><td>去回程都是廉航，通常託運 15 公斤。買太多的話回程超重會被收錢，先確認自己那張機票的額度。</td></tr>
-        <tr><th>時差</th><td>韓國比台灣快 1 小時。行程表上寫的都是當地時間。</td></tr>
-        <tr><th>現金</th><td>韓國連路邊攤都刷卡，但傳統市場、小吃攤、交通卡儲值還是要現金。每人 ₩100,000–150,000 足夠——D1 那晚邊走邊吃的攤販幾乎只收現金，那段記得留鈔票。總預算見「這趟大概要帶多少錢」。</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>出狀況的時候</h3>
-    <div class="body">
-      <table>
-        <tr><th>1330</th><td>韓國觀光公社旅遊諮詢熱線，24 小時，<b>有中文服務</b>。迷路、找店、溝通不了都可以打，也能三方通話幫你跟店家講。<a class="lk tel" href="tel:1330">撥打</a></td></tr>
-        <tr><th>112 / 119</th><td>警察／消防與救護。<a class="lk tel" href="tel:112">112</a><a class="lk tel" href="tel:119">119</a></td></tr>
-        <tr><th>台灣急難救助</th><td>旅外國人急難救助全球免付費專線：韓國國際冠碼 + 800-0885-0885。僅限車禍、搶劫、生命安危等真正緊急狀況。</td></tr>
-        <tr><th>證件遺失</th><td>先報警取得報案證明，再聯絡駐韓國台北代表部釜山辦事處。出發前把護照資料頁拍照存手機和雲端各一份。</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>這趟沒排什麼，以及為什麼</h3>
-    <div class="body">
-      <table>
-        <tr><th>汗蒸幕 SPA LAND</th><td>團隊決定不去，原本的 D2 下午時段改成 Centum City 逛街，省下六人約 ₩150,000。想加回來只能加在 10/2（療程後不能碰高溫），代價見 D2 那格。</td></tr>
-        <tr><th>天空膠囊</th><td>指定排除，沒排。海雲台藍線公園的海岸列車同理。</td></tr>
-        <tr><th>海雲台</th><td><b>這條理由已經失效。</b>原本是「要塞只能砍海東龍宮寺」，汗蒸幕拿掉後 D2 下午整段是空的，不用砍任何東西就換得進去。現在的取捨變成「看海還是逛街」，見 D2 那格。招牌的天空膠囊仍是指定排除項。</td></tr>
-        <tr><th>帝王蟹</th><td>列為 D2 午餐的選項之一（機張是產地，比市區划算），但沒排成固定行程——當晚就是韓牛燒烤，一天兩頓大餐，預算和時間都會爆。</td></tr>
-        <tr><th>甘川洞文化村</th><td>只有 D4 上午塞得下，但那天是連假最後一天＋14:15 的飛機＋六件行李。真的想去，只能拿 D1 南浦洞去換。</td></tr>
-        <tr><th>札嘎其市場</th><td>南浦洞旁邊，但生魚片要坐得久。D1 只有 2.5 小時，逛街和吃海鮮二選一，這趟選逛街。</td></tr>
-        <tr><th>Visit Busan Pass</th><td>算過不划算，見 D2 那格。</td></tr>
-        <tr><th>白淺灘、松島纜車</th><td>都在影島／西南邊，跟這趟的 1 號線＋東海線動線完全不同方向，加進來要多花一個半天。</td></tr>
-      </table>
-      <p style="margin-top:10px">以上都不是漏掉，是算過之後選擇不排。想改的話上面每一格都寫了代價，看完再提。</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>出發前待辦</h3>
-    <div class="body">
-      <ul class="todo">
-        <li><label><input type="checkbox"><span>預約書面確認 10/3 15:00<span class="sub">10/3 是國定假日，請對方用 KakaoTalk 或 email 回明確的日期時間，不要只靠口頭</span></span></label></li>
-        <li><label><input type="checkbox"><span>韓牛餐廳訂位<span class="sub">10/2 晚 19:30、6 人、海景位或包廂</span></span></label></li>
-        <li><label><input type="checkbox"><span>斜坡滑車線上票<span class="sub">每人 3–4 趟</span></span></label></li>
-        <li><label><input type="checkbox"><span>李載茂披薩查一下 CatchTable 能不能候位<span class="sub">10/3 是連假第一天，서면중앙점 和 전포점 哪家能線上抽號就用哪家</span></span></label></li>
-        <li><label><input type="checkbox"><span>免稅店要買什麼，群組先列清單<span class="sub">10/3 上午只有 1.5 小時，現場才想會來不及</span></span></label></li>
-        <li><label><input type="checkbox"><span>eSIM 在台灣安裝完成<span class="sub">六個人一個一個確認，不要到機場才發現有人沒裝</span></span></label></li>
-        <li><label><input type="checkbox"><span>裝好 KakaoMap、Kakao T、Papago</span></label></li>
-        <li><label><input type="checkbox"><span>圓孔轉接頭、行動電源</span></label></li>
-        <li><label><input type="checkbox"><span>滑車要穿的包鞋</span></label></li>
-        <li><label><input type="checkbox"><span>術後用的面膜與保濕噴霧<span class="sub">放隨身行李，回程機上用</span></span></label></li>
-        <li><label><input type="checkbox"><span>護照資料頁與機票拍照備份</span></label></li>
-      </ul>
-    </div>
-  </div>
+  </details>
 </section>
 
 <footer>
-  時間都是當地時間。行程有彈性的部分：D1 的富平夜市、D2 下午的 Centum City、D3 空窗時段的田浦咖啡街，累了就砍，不影響主要安排。<br>
-  門票價格、店家營業時間會變，出發前一週再對一次。<br>
-  最後更新：2026-09-10
+  最後更新：2026-09-11
 </footer>
 
 </div>
