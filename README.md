@@ -24,13 +24,13 @@
 
 ## 外部連結的做法
 
-- **地圖**一律用 Google Maps 搜尋連結（`maps/search/?api=1&query=<韓文關鍵字>`，關鍵字要百分比編碼）。不用 Naver／Kakao 深連結，因為沒裝 app 的人會看到全韓文頁或被丟到商店頁；代價是 Google Maps 在韓國不能導航，頁面裡有一張卡片說明這件事。
+- **地圖**一律用 Naver Map 搜尋連結（`https://map.naver.com/p/search/<韓文關鍵字>`，關鍵字要百分比編碼）。手機上會轉到 `m.map.naver.com/appLink.naver` 直接喚起 app 搜尋，可以導航；沒裝 app 的人會看到韓文網頁版或商店頁，所以 Naver Map 列為必裝。不用 Google Maps，因為它在韓國查不到步行和大眾運輸路線。
 - **票務**優先連 KKday／Klook 的搜尋頁而非單一商品頁，商品下架不會讓連結壞掉。唯一的例外是 Klook 的 SPA LAND 商品頁。
-- KKday、Klook、樂天百貨／免稅店的站台會擋 bot（curl 403、headless 吃 Cloudflare 挑戰），**改連結後沒辦法用指令驗證**，只能靠搜尋引擎索引過的 URL，或自己用瀏覽器點一次。
+- KKday、Klook、樂天百貨／免稅店、Naver Map 的站台會擋 bot（curl 403、headless 吃 Cloudflare 挑戰），**改連結後沒辦法用指令驗證**，只能靠搜尋引擎索引過的 URL，或自己用瀏覽器點一次。
 - App 連結用 App Store 數字 ID（已確認台灣區都有上架）配 Google Play 搜尋連結。
-- **搜得到不等於還在營業**：加店家連結時要另外確認營業狀態，Google Maps 上「搜尋命中」只代表這個地點曾經存在。實際踩過：Kakao Friends 南浦店已歇業、李載茂披薩西面店整併到中央店。
+- **搜得到不等於還在營業**：加店家連結時要另外確認營業狀態，地圖上「搜尋命中」只代表這個地點曾經存在。實際踩過：Kakao Friends 南浦店已歇業、李載茂披薩西面店整併到中央店。
 - 但**「永久歇業」也可能是搬遷**，別直接刪店：Olive Young 南浦 Town 標永久歇業，實際是 2026/8 擴張遷移到新址，店更大了。看到歇業標記要再查一次新聞或官網。
-- 掃營業狀態的做法：開 `maps/search/?api=1&query=<韓文>`，等 SPA 渲染完（`document.title` 從「Google 地圖」變成店名才算載入好），再抓 body 文字找歇業字樣。**判讀要看標題**——標題是店名代表單店頁、歇業標記可信；標題還是搜尋詞代表列表頁，那個標記是列表裡某一家的，不代表搜尋失效。腳本留在 job 暫存區，重跑時重寫一份即可。
+- 掃營業狀態的做法（借 Google Maps 查，只驗營業狀態，**不代表頁面上的 Naver 連結搜得到**，那個要用手機點）：開 `https://www.google.com/maps/search/?api=1&query=<韓文>`，等 SPA 渲染完（`document.title` 從「Google 地圖」變成店名才算載入好），再抓 body 文字找歇業字樣。**判讀要看標題**——標題是店名代表單店頁、歇業標記可信；標題還是搜尋詞代表列表頁，那個標記是列表裡某一家的，不代表搜尋失效。腳本留在 job 暫存區，重跑時重寫一份即可。
 
 ## 圖片
 
